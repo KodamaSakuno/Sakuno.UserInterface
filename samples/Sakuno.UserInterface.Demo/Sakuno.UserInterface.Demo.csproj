@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LanguageTargets>$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets</LanguageTargets>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <TargetFramework>net461</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.1</LangVersion>
+    <RootNamespace>Sakuno.UserInterface.Demo</RootNamespace>
+    <AssemblyName>Sakuno.UserInterface.Demo</AssemblyName>
+    <OutputPath>$(SolutionDir)artifacts\samples\$(Configuration)\</OutputPath>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.1">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="**\*.cs" Exclude="$(BaseIntermediateOutputPath)\**" />
+    <Page Include="**\*.xaml" Exclude="App.xaml" SubType="Designer" Generator="MSBuild:Compile" />
+    <ApplicationDefinition Include="App.xaml" SubType="Designer" Generator="MSBuild:Compile" />
+    <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Sakuno.UserInterface\Sakuno.UserInterface.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+
+  <Target Name="WorkaroundForXAMLIntellisenseBuildIssue" AfterTargets="_CheckCompileDesignTimePrerequisite">
+    <PropertyGroup>
+      <BuildingProject>false</BuildingProject>
+    </PropertyGroup>
+  </Target>
+
+</Project>
