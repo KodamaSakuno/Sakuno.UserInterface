@@ -35,6 +35,8 @@
     <Compile Include="**\*.cs" Exclude="$(BaseIntermediateOutputPath)\**" />
     <Page Include="**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
     <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+    <Content Include="**\*.fx" />
+    <Resource Include="**\*.ps" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +52,10 @@
     <PropertyGroup>
       <BuildingProject>false</BuildingProject>
     </PropertyGroup>
+  </Target>
+
+  <Target Name="PreBuild" AfterTargets="PreBuildEvent">
+    <Exec Command="powershell -ExecutionPolicy Unrestricted -File $(SolutionDir)scripts\Execute-PreBuildEvent.ps1 -SolutionDir $(SolutionDir) -ProjectPath $(ProjectPath) -Configuration $(ConfigurationName) -TargetDir $(TargetDir) -TargetPath $(TargetPath)" />
   </Target>
 
 </Project>
