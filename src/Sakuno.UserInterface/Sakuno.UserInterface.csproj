@@ -6,7 +6,7 @@
     <TargetFramework>net461</TargetFramework>
     <OutputType>Library</OutputType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>7.2</LangVersion>
     <RootNamespace>Sakuno.UserInterface</RootNamespace>
     <AssemblyName>Sakuno.UserInterface</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
