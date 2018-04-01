@@ -41,5 +41,42 @@ namespace Sakuno.UserInterface.Interactivity
 
             newValue.Attach(obj);
         }
+
+        static readonly DependencyProperty TriggersProperty =
+            DependencyProperty.RegisterAttached("ShadowTriggers", typeof(TriggerCollection), typeof(Interaction),
+                new PropertyMetadata(OnTriggersChanged));
+
+        public static TriggerCollection GetTriggers(DependencyObject obj)
+        {
+            var result = (TriggerCollection)obj.GetValue(TriggersProperty);
+            if (result == null)
+            {
+                result = new TriggerCollection();
+
+                obj.SetValue(TriggersProperty, result);
+            }
+
+            return result;
+        }
+
+        static void OnTriggersChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            var oldValue = (TriggerCollection)e.OldValue;
+            var newValue = (TriggerCollection)e.NewValue;
+
+            if (oldValue == newValue)
+                return;
+
+            if (oldValue != null && oldValue._associatedObject != null)
+                oldValue.Detach();
+
+            if (newValue == null)
+                return;
+
+            if (newValue._associatedObject != null)
+                throw new InvalidOperationException("The collection cannot be attached to multiple objects.");
+
+            newValue.Attach(obj);
+        }
     }
 }
