@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Windows;
 
 namespace Sakuno.UserInterface.Interactivity
@@ -36,6 +37,9 @@ namespace Sakuno.UserInterface.Interactivity
 
             if (_associatedObject != null)
                 throw new InvalidOperationException("The collection cannot be attached to multiple objects.");
+
+            if ((bool)GetValue(DesignerProperties.IsInDesignModeProperty))
+                return;
 
             WritePreamble();
             _associatedObject = target;
