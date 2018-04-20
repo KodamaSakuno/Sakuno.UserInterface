@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Sakuno.UserInterface.Interactivity
+namespace Sakuno.UserInterface.Interactivity.Primitives
 {
     public abstract class AttachableObjectCollection<T> : FreezableCollection<T> where T : DependencyObject, IAttachableObject
     {

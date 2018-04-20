@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Windows;
 
-namespace Sakuno.UserInterface.Interactivity
+namespace Sakuno.UserInterface.Interactivity.Primitives
 {
     public class MethodArgumentCollection : FreezableCollection<MethodArgument>
     {

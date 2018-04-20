@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace Sakuno.UserInterface.Interactivity
+namespace Sakuno.UserInterface.Interactivity.Primitives
 {
-    public abstract class Behavior : Animatable, IAttachableObject
+    public abstract class TriggerAction : Animatable, IAttachableObject
     {
         Type _associatedType;
 
@@ -19,8 +19,8 @@ namespace Sakuno.UserInterface.Interactivity
             }
         }
 
-        protected Behavior() : this(typeof(DependencyObject)) { }
-        private protected Behavior(Type associatedType)
+        protected TriggerAction() : this(typeof(DependencyObject)) { }
+        private protected TriggerAction(Type associatedType)
         {
             _associatedType = associatedType;
         }
@@ -36,7 +36,7 @@ namespace Sakuno.UserInterface.Interactivity
                 return;
 
             if (_associatedObject != null)
-                throw new InvalidOperationException("The behavior cannot be attached to multiple objects.");
+                throw new InvalidOperationException("The trigger action cannot be attached to multiple objects.");
 
             if (!_associatedType.IsAssignableFrom(target.GetType()))
                 throw new InvalidOperationException($"Cannot attach to the target. The target should be an object of type \"{_associatedType.FullName}\".");
@@ -60,13 +60,16 @@ namespace Sakuno.UserInterface.Interactivity
         protected virtual void OnAttached() { }
         protected virtual void OnDetaching() { }
 
+        internal void InternalInvoke(object args) => Invoke(args);
+        protected abstract void Invoke(object args);
+
         protected override Freezable CreateInstanceCore() => (Freezable)Activator.CreateInstance(GetType());
     }
 
-    public abstract class Behavior<T> : Behavior where T : DependencyObject
+    public abstract class TriggerAction<T> : TriggerAction where T : DependencyObject
     {
         public new T AssociatedObject => (T)base.AssociatedObject;
 
-        protected Behavior() : base(typeof(T)) { }
+        protected TriggerAction() : base(typeof(T)) { }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Sakuno.UserInterface.Interactivity.Primitives;
+using System.Windows;
 
 namespace Sakuno.UserInterface.Interactivity
 {

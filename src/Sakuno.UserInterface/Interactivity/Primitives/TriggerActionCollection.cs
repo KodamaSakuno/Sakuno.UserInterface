@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Sakuno.UserInterface.Interactivity
+namespace Sakuno.UserInterface.Interactivity.Primitives
 {
     public sealed class TriggerActionCollection : AttachableObjectCollection<TriggerAction>
     {

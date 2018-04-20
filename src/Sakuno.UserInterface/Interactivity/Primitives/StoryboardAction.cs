@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media.Animation;
 
-namespace Sakuno.UserInterface.Interactivity
+namespace Sakuno.UserInterface.Interactivity.Primitives
 {
     [ContentProperty(nameof(Storyboard))]
     public abstract class StoryboardAction : TriggerAction

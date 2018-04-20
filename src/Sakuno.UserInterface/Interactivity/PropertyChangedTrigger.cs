@@ -2,7 +2,7 @@
 
 namespace Sakuno.UserInterface.Interactivity
 {
-    public class PropertyChangedTrigger : Trigger
+    public class PropertyChangedTrigger : Primitives.Trigger
     {
         public static readonly DependencyProperty BindingProperty =
             DependencyProperty.Register(nameof(Binding), typeof(object), typeof(PropertyChangedTrigger),

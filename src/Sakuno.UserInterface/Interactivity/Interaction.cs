@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Sakuno.UserInterface.Interactivity.Primitives;
+using System;
 using System.Windows;
+using TriggerCollection = Sakuno.UserInterface.Interactivity.Primitives.TriggerCollection;
 
 namespace Sakuno.UserInterface.Interactivity
 {

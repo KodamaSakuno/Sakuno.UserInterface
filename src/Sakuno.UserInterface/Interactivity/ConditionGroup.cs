@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using Sakuno.UserInterface.Interactivity.Primitives;
+using System.Windows;
 using System.Windows.Markup;
+using ConditionCollection = Sakuno.UserInterface.Interactivity.Primitives.ConditionCollection;
 
 namespace Sakuno.UserInterface.Interactivity
 {

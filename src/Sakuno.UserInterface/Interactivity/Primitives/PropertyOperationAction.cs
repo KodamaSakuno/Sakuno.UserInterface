@@ -3,7 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Sakuno.UserInterface.Interactivity
+namespace Sakuno.UserInterface.Interactivity.Primitives
 {
     public abstract class PropertyOperationAction : TargetedTriggerAction
     {

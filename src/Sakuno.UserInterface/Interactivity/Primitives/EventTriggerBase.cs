@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Markup;
 
-namespace Sakuno.UserInterface.Interactivity
+namespace Sakuno.UserInterface.Interactivity.Primitives
 {
     public abstract class EventTriggerBase : Trigger
     {

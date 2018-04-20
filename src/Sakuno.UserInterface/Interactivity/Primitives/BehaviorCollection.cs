@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 
-namespace Sakuno.UserInterface.Interactivity
+namespace Sakuno.UserInterface.Interactivity.Primitives
 {
-    public sealed class TriggerCollection : AttachableObjectCollection<Trigger>
+    public sealed class BehaviorCollection : AttachableObjectCollection<Behavior>
     {
         protected override void OnAttached()
         {
@@ -16,8 +16,8 @@ namespace Sakuno.UserInterface.Interactivity
                 item.Detach();
         }
 
-        internal override void OnItemAdded(Trigger item) => item.Attach(_associatedObject);
-        internal override void OnItemRemoved(Trigger item)
+        internal override void OnItemAdded(Behavior item) => item.Attach(_associatedObject);
+        internal override void OnItemRemoved(Behavior item)
         {
             if (item._associatedObject == null)
                 return;
@@ -25,6 +25,6 @@ namespace Sakuno.UserInterface.Interactivity
             item.Detach();
         }
 
-        protected override Freezable CreateInstanceCore() => new TriggerCollection();
+        protected override Freezable CreateInstanceCore() => new BehaviorCollection();
     }
 }
