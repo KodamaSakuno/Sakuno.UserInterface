@@ -3,7 +3,7 @@
   <PropertyGroup>
     <LanguageTargets>$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets</LanguageTargets>
     <EnableDefaultItems>false</EnableDefaultItems>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFrameworks>net461;net462</TargetFrameworks>
     <OutputType>Library</OutputType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>7.2</LangVersion>
