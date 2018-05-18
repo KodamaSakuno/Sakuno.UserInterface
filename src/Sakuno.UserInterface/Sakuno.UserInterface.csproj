@@ -1,12 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="MSBuild.Sdk.Extras/1.5.4">
 
   <PropertyGroup>
-    <LanguageTargets>$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets</LanguageTargets>
-    <EnableDefaultItems>false</EnableDefaultItems>
     <TargetFrameworks>net461;net462</TargetFrameworks>
     <OutputType>Library</OutputType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>7.3</LangVersion>
     <RootNamespace>Sakuno.UserInterface</RootNamespace>
     <AssemblyName>Sakuno.UserInterface</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -24,38 +22,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.1">
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Sakuno.Base" Version="0.3.2" />
     <PackageReference Include="Sakuno.SystemLayer" Version="0.3.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="$(BaseIntermediateOutputPath)\**" />
-    <Page Include="**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
-    <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
     <Content Include="**\*.fx" />
     <Resource Include="**\*.ps" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-
-  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
-
-  <Target Name="WorkaroundForXAMLIntellisenseBuildIssue" AfterTargets="_CheckCompileDesignTimePrerequisite">
-    <PropertyGroup>
-      <BuildingProject>false</BuildingProject>
-    </PropertyGroup>
-  </Target>
-
   <Target Name="PreBuild" AfterTargets="PreBuildEvent">
-    <Exec Command="powershell -ExecutionPolicy Unrestricted -File $(SolutionDir)scripts\Execute-PreBuildEvent.ps1 -SolutionDir $(SolutionDir) -ProjectPath $(ProjectPath) -Configuration $(ConfigurationName) -TargetDir $(TargetDir) -TargetPath $(TargetPath)" />
+    <Exec Command="powershell -ExecutionPolicy Bypass -File $(SolutionDir)scripts\Execute-PreBuildEvent.ps1 -SolutionDir $(SolutionDir) -ProjectPath $(ProjectPath) -Configuration $(ConfigurationName) -TargetDir $(TargetDir) -TargetPath $(TargetPath)" />
   </Target>
 
 </Project>
