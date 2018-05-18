@@ -29,6 +29,8 @@
   <ItemGroup>
     <Content Include="**\*.fx" />
     <Resource Include="**\*.ps" />
+    <UpToDateCheckInput Include="**\*.fx" />
+    <UpToDateCheckInput Include="**\*.ps" />
   </ItemGroup>
 
   <Target Name="PreBuild" AfterTargets="PreBuildEvent">
