@@ -3,7 +3,6 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
-using System.Windows.Media;
 
 namespace Sakuno.UserInterface.Controls
 {
@@ -31,21 +30,7 @@ namespace Sakuno.UserInterface.Controls
             set => SetValue(AutoRotationProperty, BooleanUtil.GetBoxed(value));
         }
 
-        static readonly DependencyPropertyKey DpiScaleTransformPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(DpiScaleTransform), typeof(Transform), typeof(ExtendedWindow),
-                new UIPropertyMetadata(Transform.Identity));
-
-        public static readonly DependencyProperty DpiScaleTransformProperty = DpiScaleTransformPropertyKey.DependencyProperty;
-
-        public Transform DpiScaleTransform
-        {
-            get => (Transform)GetValue(DpiScaleTransformProperty);
-            private set => SetValue(DpiScaleTransformPropertyKey, value);
-        }
-
         protected IntPtr Handle { get; private set; }
-
-        Dpi _systemDpi, _currentDpi;
 
         static ExtendedWindow()
         {
@@ -59,35 +44,14 @@ namespace Sakuno.UserInterface.Controls
 
             Handle = new WindowInteropHelper(this).Handle;
 
-            var hwndSource = HwndSource.FromHwnd(Handle);
+            HwndSource.FromHwnd(Handle).AddHook(WndProc);
 
-            var monitor = NativeMethods.User32.MonitorFromWindow(Handle, NativeConstants.MFW.MONITOR_DEFAULTTONEAREST);
-
-            InitializeDpi(hwndSource.CompositionTarget.TransformToDevice, monitor);
-            InitializeScreenOrientation(monitor);
-
-            hwndSource.AddHook(WndProc);
+            InitializeScreenOrientation();
         }
-        void InitializeDpi(Matrix transformation, IntPtr monitor)
-        {
-            var x = Dpi.Default.X * transformation.M11;
-            var y = Dpi.Default.Y * transformation.M22;
-
-            _systemDpi = new Dpi((int)x, (int)y);
-
-            if (!OS.IsWin8Point1OrLater)
-            {
-                _currentDpi = _systemDpi;
-                return;
-            }
-
-            NativeMethods.SHCore.GetDpiForMonitor(monitor, NativeConstants.MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI, out var dpiX, out var dpiY);
-
-            ChangeDpi(new Dpi(dpiX, dpiY));
-        }
-        void InitializeScreenOrientation(IntPtr monitor)
+        void InitializeScreenOrientation()
         {
             var info = new NativeStructs.MONITORINFO() { cbSize = Marshal.SizeOf<NativeStructs.MONITORINFO>() };
+            var monitor = NativeMethods.User32.MonitorFromWindow(Handle, NativeConstants.MFW.MONITOR_DEFAULTTONEAREST);
 
             NativeMethods.User32.GetMonitorInfo(monitor, ref info);
 
@@ -96,14 +60,6 @@ namespace Sakuno.UserInterface.Controls
             var orientation = width > height ? ScreenOrientation.Landscape : ScreenOrientation.Portrait;
 
             ScreenOrientation = orientation;
-        }
-
-        void ChangeDpi(Dpi dpi)
-        {
-            DpiScaleTransform = dpi == _systemDpi ? Transform.Identity
-                                                  : new ScaleTransform(dpi.X / (double)_systemDpi.X, dpi.Y / (double)_systemDpi.Y);
-
-            _currentDpi = dpi;
         }
 
         unsafe IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -125,16 +81,6 @@ namespace Sakuno.UserInterface.Controls
                             NativeMethods.User32.SetWindowPos(Handle, IntPtr.Zero, rect.Left, rect.Top, rect.Height, rect.Width, NativeEnums.SetWindowPosition.SWP_NOZORDER | NativeEnums.SetWindowPosition.SWP_NOACTIVATE);
                         }
                     }
-                    break;
-
-                case NativeConstants.WindowMessage.WM_DPICHANGED:
-                    var dpiX = NativeUtils.LoWord(wParam);
-                    var dpiY = NativeUtils.HiWord(wParam);
-                    var newRect = (NativeStructs.RECT*)lParam;
-
-                    ChangeDpi(new Dpi(dpiX, dpiY));
-
-                    NativeMethods.User32.SetWindowPos(Handle, IntPtr.Zero, newRect->Left, newRect->Top, newRect->Width, newRect->Height, NativeEnums.SetWindowPosition.SWP_NOZORDER | NativeEnums.SetWindowPosition.SWP_NOACTIVATE);
                     break;
             }
 

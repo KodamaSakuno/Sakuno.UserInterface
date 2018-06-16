@@ -9,7 +9,7 @@
                     Title="Demo"
                     Width="800" Height="600"
                     TextOptions.TextFormattingMode="Display">
-    <Grid LayoutTransform="{Binding DpiScaleTransform, RelativeSource={RelativeSource AncestorType={x:Type uic:ExtendedWindow}}}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
