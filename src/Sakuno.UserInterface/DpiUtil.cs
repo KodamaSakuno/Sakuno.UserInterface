@@ -1,5 +1,6 @@
 ﻿using Sakuno.SystemLayer;
 using System;
+using System.Windows.Media;
 
 namespace Sakuno.UserInterface
 {
@@ -22,6 +23,13 @@ namespace Sakuno.UserInterface
             SystemPrimary = new Dpi(x, y);
 
             NativeMethods.User32.ReleaseDC(IntPtr.Zero, hdc);
+        }
+
+        public static Dpi GetDpi(Visual visual)
+        {
+            var result = VisualTreeHelper.GetDpi(visual);
+
+            return new Dpi(result.DpiScaleX, result.DpiScaleY);
         }
     }
 }

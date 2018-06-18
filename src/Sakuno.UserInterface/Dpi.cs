@@ -23,6 +23,14 @@ namespace Sakuno.UserInterface
             ScaleX = x / (double)Default.X;
             ScaleY = y / (double)Default.Y;
         }
+        public Dpi(double scaleX, double scaleY)
+        {
+            ScaleX = scaleX;
+            ScaleY = scaleY;
+
+            X = (int)Math.Round(ScaleX * 96);
+            Y = (int)Math.Round(ScaleY * 96);
+        }
 
         public override bool Equals(object obj) => obj is Dpi dpi && Equals(dpi);
         public bool Equals(Dpi other) => X == other.X && Y == other.Y;
