@@ -10,7 +10,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <OutputPath>$(SolutionDir)artifacts\$(Configuration)\</OutputPath>
     <PackageId>Sakuno.UserInterface</PackageId>
-    <Version>0.3.0</Version>
+    <Version>0.3.0-pre</Version>
     <Authors>Kodama Sakuno</Authors>
     <Description>Sakuno's framework for WPF apps</Description>
     <Product>Sakuno.UserInterface</Product>
@@ -19,6 +19,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl>https://github.com/KodamaSakuno/Sakuno.UserInterface/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/KodamaSakuno/Sakuno.UserInterface</PackageProjectUrl>
+    <IncludeContentInPack>false</IncludeContentInPack>
   </PropertyGroup>
 
   <ItemGroup>
