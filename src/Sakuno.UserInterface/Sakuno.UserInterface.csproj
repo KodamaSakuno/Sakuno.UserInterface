@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras/1.5.4">
+<Project Sdk="MSBuild.Sdk.Extras/1.6.41">
 
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
@@ -9,6 +9,7 @@
     <AssemblyName>Sakuno.UserInterface</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <OutputPath>$(SolutionDir)artifacts\$(Configuration)\</OutputPath>
+    <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
     <PackageId>Sakuno.UserInterface</PackageId>
     <Version>0.3.0-pre</Version>
     <Authors>Kodama Sakuno</Authors>
