@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <Color x:Key="ThemeColorKey">#FF2D2D30</Color>
+    <SolidColorBrush x:Key="ThemeBrushKey" Color="{StaticResource ThemeColorKey}" o:Freeze="True" />
+
+    <Color x:Key="BackgroundColorKey">#FF1B1B1C</Color>
+    <SolidColorBrush x:Key="BackgroundBrushKey" Color="{StaticResource BackgroundColorKey}" o:Freeze="True" />
+    <Color x:Key="BorderColorKey">#FF3F3F46</Color>
+    <SolidColorBrush x:Key="BorderBrushKey" Color="{StaticResource BorderColorKey}" o:Freeze="True" />
+    <Color x:Key="ForegroundColorKey">#FFC8C8C8</Color>
+    <SolidColorBrush x:Key="ForegroundBrushKey" Color="{StaticResource ForegroundColorKey}" o:Freeze="True" />
+
+    <Color x:Key="ActiveBackgroundColorKey">#FF424245</Color>
+    <SolidColorBrush x:Key="ActiveBackgroundBrushKey" Color="{StaticResource ActiveBackgroundColorKey}" o:Freeze="True" />
+    <Color x:Key="ActiveBorderColorKey">#FF3F3F46</Color>
+    <SolidColorBrush x:Key="ActiveBorderBrushKey" Color="{StaticResource ActiveBorderColorKey}" o:Freeze="True" />
+    <Color x:Key="ActiveForegroundColorKey">#FFF1F1F1</Color>
+    <SolidColorBrush x:Key="ActiveForegroundBrushKey" Color="{StaticResource ActiveForegroundColorKey}" o:Freeze="True" />
+
+    <Color x:Key="InactiveBackgroundColorKey">#FF2D2D30</Color>
+    <SolidColorBrush x:Key="InactiveBackgroundBrushKey" Color="{StaticResource InactiveBackgroundColorKey}" o:Freeze="True" />
+    <Color x:Key="InactiveBorderColorKey">#FF3F3F46</Color>
+    <SolidColorBrush x:Key="InactiveBorderBrushKey" Color="{StaticResource InactiveBorderColorKey}" o:Freeze="True" />
+    <Color x:Key="InactiveForegroundColorKey">#FF656565</Color>
+    <SolidColorBrush x:Key="InactiveForegroundBrushKey" Color="{StaticResource InactiveForegroundColorKey}" o:Freeze="True" />
+
+</ResourceDictionary>

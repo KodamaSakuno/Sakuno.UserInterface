@@ -6,6 +6,8 @@ namespace Sakuno.UserInterface.Demo
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            ThemeManager.Instance.Initialize(this, Themes.Light);
+
             base.OnStartup(e);
         }
     }
