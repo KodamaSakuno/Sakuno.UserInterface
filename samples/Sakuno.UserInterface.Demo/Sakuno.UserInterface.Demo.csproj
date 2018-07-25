@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras/1.6.41">
+<Project Sdk="MSBuild.Sdk.Extras/1.5.4">
 
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
@@ -8,7 +8,6 @@
     <RootNamespace>Sakuno.UserInterface.Demo</RootNamespace>
     <AssemblyName>Sakuno.UserInterface.Demo</AssemblyName>
     <OutputPath>$(SolutionDir)artifacts\samples\$(Configuration)\</OutputPath>
-    <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon />
     <StartupObject />
