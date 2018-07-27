@@ -1,4 +1,4 @@
-﻿<uic:ExtendedWindow x:Class="Sakuno.UserInterface.Demo.MainWindow"
+﻿<uic:ModernWindow x:Class="Sakuno.UserInterface.Demo.MainWindow"
                     x:ClassModifier="internal"
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,7 +7,6 @@
                     xmlns:uic="clr-namespace:Sakuno.UserInterface.Controls;assembly=Sakuno.UserInterface"
                     mc:Ignorable="d"
                     Title="Demo"
-                    Background="{DynamicResource ThemeBrushKey}"
                     Width="800" Height="600"
                     TextOptions.TextFormattingMode="Display">
     <Grid>
@@ -17,4 +16,4 @@
             <RowDefinition Height="23" />
         </Grid.RowDefinitions>
     </Grid>
-</uic:ExtendedWindow>
+</uic:ModernWindow>

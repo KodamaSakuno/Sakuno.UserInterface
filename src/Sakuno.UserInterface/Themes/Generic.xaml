@@ -1,5 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
 
+        <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/ModernWindow.xaml" />
+
+        <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Shell/GlowingEdge.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
