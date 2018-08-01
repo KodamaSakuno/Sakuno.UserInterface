@@ -23,16 +23,28 @@ namespace Sakuno.UserInterface
             }
         }
 
+        Accent _accent;
+        public Accent Accent
+        {
+            get => _accent;
+            private set
+            {
+                _accent = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         ThemeManager() { }
 
-        public void Initialize(Application app, Theme theme)
+        public void Initialize(Application app, Theme theme, Accent accent)
         {
             if (app.Resources.MergedDictionaries.Contains(_root))
                 throw new InvalidOperationException("Duplicate initialization for this Application instance.");
 
             ChangeTheme(theme);
+            ChangeAccent(accent);
 
             app.Resources.MergedDictionaries.Add(_root);
         }
@@ -48,8 +60,19 @@ namespace Sakuno.UserInterface
             Theme = theme;
             OverwriteItems(theme.ResourceDictionary, Theme.EnumerateRequiredKeys());
         }
+        public void ChangeAccent(Accent accent)
+        {
+            if (accent == null)
+                throw new ArgumentNullException(nameof(accent));
 
-        void OverwriteItems(ResourceDictionary dictionary, IEnumerable<string> keys)
+            if (_accent == accent)
+                return;
+
+            Accent = accent;
+            OverwriteItems(accent.ResourceDictionary, Accent.EnumerateRequiredKeys());
+        }
+
+        void OverwriteItems(ResourceDictionary dictionary, string[] keys)
         {
             foreach (var key in keys)
                 if (!dictionary.Contains(key))

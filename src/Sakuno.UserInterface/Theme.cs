@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 
 namespace Sakuno.UserInterface
@@ -47,31 +46,31 @@ namespace Sakuno.UserInterface
             Name = name;
         }
 
-        internal static IEnumerable<string> EnumerateRequiredKeys()
+        internal static string[] EnumerateRequiredKeys() => new[]
         {
-            yield return "ThemeColorKey";
-            yield return "ThemeBrushKey";
+            "ThemeColorKey",
+            "ThemeBrushKey",
 
-            yield return "BackgroundColorKey";
-            yield return "BackgroundBrushKey";
-            yield return "BorderColorKey";
-            yield return "BorderBrushKey";
-            yield return "ForegroundColorKey";
-            yield return "ForegroundBrushKey";
+            "BackgroundColorKey",
+            "BackgroundBrushKey",
+            "BorderColorKey",
+            "BorderBrushKey",
+            "ForegroundColorKey",
+            "ForegroundBrushKey",
 
-            yield return "ActiveBackgroundColorKey";
-            yield return "ActiveBackgroundBrushKey";
-            yield return "ActiveBorderColorKey";
-            yield return "ActiveBorderBrushKey";
-            yield return "ActiveForegroundColorKey";
-            yield return "ActiveForegroundBrushKey";
+            "ActiveBackgroundColorKey",
+            "ActiveBackgroundBrushKey",
+            "ActiveBorderColorKey",
+            "ActiveBorderBrushKey",
+            "ActiveForegroundColorKey",
+            "ActiveForegroundBrushKey",
 
-            yield return "InactiveBackgroundColorKey";
-            yield return "InactiveBackgroundBrushKey";
-            yield return "InactiveBorderColorKey";
-            yield return "InactiveBorderBrushKey";
-            yield return "InactiveForegroundColorKey";
-            yield return "InactiveForegroundBrushKey";
-        }
+            "InactiveBackgroundColorKey",
+            "InactiveBackgroundBrushKey",
+            "InactiveBorderColorKey",
+            "InactiveBorderBrushKey",
+            "InactiveForegroundColorKey",
+            "InactiveForegroundBrushKey",
+        };
     }
 }

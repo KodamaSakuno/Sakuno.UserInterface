@@ -15,5 +15,7 @@
             <RowDefinition />
             <RowDefinition Height="23" />
         </Grid.RowDefinitions>
+
+        <Rectangle Fill="{DynamicResource AccentBrushKey}" Grid.Row="2" />
     </Grid>
 </uic:ModernWindow>
