@@ -175,24 +175,25 @@ namespace Sakuno.UserInterface.Shell
             switch ((NativeConstants.WindowMessage)msg)
             {
                 case NativeConstants.WindowMessage.WM_MOUSEACTIVATE:
+                    handled = true;
                     return (IntPtr)NativeConstants.MouseActivate.MA_NOACTIVATE;
 
                 case NativeConstants.WindowMessage.WM_NCHITTEST:
+                    handled = true;
                     return (IntPtr)GetHitTest(lParam);
 
-                case NativeConstants.WindowMessage.WM_LBUTTONDOWN:
-                case NativeConstants.WindowMessage.WM_LBUTTONDBLCLK:
-                case NativeConstants.WindowMessage.WM_RBUTTONDOWN:
-                case NativeConstants.WindowMessage.WM_RBUTTONDBLCLK:
-                case NativeConstants.WindowMessage.WM_MBUTTONDOWN:
-                case NativeConstants.WindowMessage.WM_MBUTTONDBLCLK:
-                case NativeConstants.WindowMessage.WM_XBUTTONDOWN:
-                case NativeConstants.WindowMessage.WM_XBUTTONDBLCLK:
-                    const int Diff = NativeConstants.WindowMessage.WM_LBUTTONDOWN - NativeConstants.WindowMessage.WM_NCLBUTTONDOWN;
-                    var hitTest = GetHitTest(lParam);
+                case NativeConstants.WindowMessage.WM_NCLBUTTONDOWN:
+                case NativeConstants.WindowMessage.WM_NCLBUTTONDBLCLK:
+                case NativeConstants.WindowMessage.WM_NCRBUTTONDOWN:
+                case NativeConstants.WindowMessage.WM_NCRBUTTONDBLCLK:
+                case NativeConstants.WindowMessage.WM_NCMBUTTONDOWN:
+                case NativeConstants.WindowMessage.WM_NCMBUTTONDBLCLK:
+                case NativeConstants.WindowMessage.WM_NCXBUTTONDOWN:
+                case NativeConstants.WindowMessage.WM_NCXBUTTONDBLCLK:
+                    handled = true;
 
                     NativeMethods.User32.PostMessageW(_ownerHandle, NativeConstants.WindowMessage.WM_ACTIVATE, (IntPtr)NativeConstants.MouseActivate.MA_ACTIVATEANDEAT, IntPtr.Zero);
-                    NativeMethods.User32.PostMessageW(_ownerHandle, message - Diff, (IntPtr)hitTest, IntPtr.Zero);
+                    NativeMethods.User32.PostMessageW(_ownerHandle, message, wParam, IntPtr.Zero);
                     break;
             }
 
@@ -203,47 +204,43 @@ namespace Sakuno.UserInterface.Shell
         {
             var x = lParam.LoWord();
             var y = lParam.HiWord();
-            var point = new NativeStructs.POINT(x, y);
 
-            NativeMethods.User32.ScreenToClient(Handle, ref point);
-
-            x = point.X;
-            y = point.Y;
+            const int GlowSize = 9;
 
             switch (_position)
             {
                 case Dock.Left:
-                    if (y < 9)
+                    if (y < _ownerRect.Top + GlowSize)
                         return NativeConstants.HitTest.HTTOPLEFT;
 
-                    if (y > _ownerRect.Height - 9)
+                    if (y > _ownerRect.Bottom - GlowSize)
                         return NativeConstants.HitTest.HTBOTTOMLEFT;
 
                     return NativeConstants.HitTest.HTLEFT;
 
                 case Dock.Top:
-                    if (x < 18)
+                    if (x < _ownerRect.Left + GlowSize)
                         return NativeConstants.HitTest.HTTOPLEFT;
 
-                    if (x > _ownerRect.Width - 18)
+                    if (x > _ownerRect.Right - GlowSize)
                         return NativeConstants.HitTest.HTTOPRIGHT;
 
                     return NativeConstants.HitTest.HTTOP;
 
                 case Dock.Right:
-                    if (y < 9)
+                    if (y < _ownerRect.Top + GlowSize)
                         return NativeConstants.HitTest.HTTOPRIGHT;
 
-                    if (y > _ownerRect.Height - 9)
+                    if (y > _ownerRect.Bottom - GlowSize)
                         return NativeConstants.HitTest.HTBOTTOMRIGHT;
 
                     return NativeConstants.HitTest.HTRIGHT;
 
                 case Dock.Bottom:
-                    if (x < 18)
+                    if (x < _ownerRect.Left + GlowSize)
                         return NativeConstants.HitTest.HTBOTTOMLEFT;
 
-                    if (x > _ownerRect.Width - 18)
+                    if (x > _ownerRect.Right - GlowSize)
                         return NativeConstants.HitTest.HTBOTTOMRIGHT;
 
                     return NativeConstants.HitTest.HTBOTTOM;
