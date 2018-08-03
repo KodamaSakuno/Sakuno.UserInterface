@@ -15,7 +15,7 @@ build:
   project: Sakuno.UserInterface.sln
   verbosity: minimal
 after_test:
-- ps: Move-Item artifacts\$($env:configuration)\*.nupkg .
+- ps: Move-Item artifacts\$($env:configuration)\*.nupkg $env:APPVEYOR_BUILD_FOLDER
 artifacts:
 - path: '*.nupkg'
   name: NuGet
@@ -23,4 +23,4 @@ deploy:
 - provider: NuGet
   api_key:
     secure: uRlrRr17TJpGYMdBG1pTtK/OZws8RkQvrrzgF6lCdXytGjPhsPFXk86qvDzpMkOO
-  skip_symbols: true 
+  skip_symbols: true
