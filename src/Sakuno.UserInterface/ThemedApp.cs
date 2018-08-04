@@ -50,7 +50,7 @@ namespace Sakuno.UserInterface
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected ThemedApp()
+        public ThemedApp()
         {
             Theme = Themes.Light;
             Accent = Accents.Blue;
