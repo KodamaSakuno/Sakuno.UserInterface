@@ -2,6 +2,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/ModernWindow.xaml" />
+        <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/WindowCaptionButtons.xaml" />
 
         <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Shell/GlowingEdge.xaml" />
 
