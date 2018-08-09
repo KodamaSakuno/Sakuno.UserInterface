@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras/1.5.4">
+<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
@@ -20,6 +20,7 @@
     <PackageLicenseUrl>https://github.com/KodamaSakuno/Sakuno.UserInterface/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/KodamaSakuno/Sakuno.UserInterface</PackageProjectUrl>
     <IncludeContentInPack>false</IncludeContentInPack>
+    <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
   </PropertyGroup>
 
   <ItemGroup>
