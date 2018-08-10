@@ -12,6 +12,16 @@ namespace Sakuno.UserInterface.Controls
     {
         static WindowChrome _defaultWindowChrome;
 
+        public static readonly DependencyProperty HideDefaultTitleBarProperty =
+            DependencyProperty.Register(nameof(HideDefaultTitleBar), typeof(bool), typeof(ModernWindow),
+                new PropertyMetadata(BooleanUtil.False));
+
+        public bool HideDefaultTitleBar
+        {
+            get => (bool)GetValue(HideDefaultTitleBarProperty);
+            set => SetValue(HideDefaultTitleBarProperty, BooleanUtil.GetBoxed(value));
+        }
+
         ModernWindowChrome _chrome;
 
         bool _suspendWindowPosChanged;

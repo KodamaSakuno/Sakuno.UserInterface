@@ -13,7 +13,7 @@
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
                         <AdornerDecorator>
                             <DockPanel>
-                                <DockPanel DockPanel.Dock="Top">
+                                <DockPanel Name="DefaultTitleBar" DockPanel.Dock="Top">
                                     <uic:WindowCaptionButtons DockPanel.Dock="Right" />
                                 </DockPanel>
 
@@ -21,6 +21,12 @@
                             </DockPanel>
                         </AdornerDecorator>
                     </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HideDefaultTitleBar" Value="True">
+                            <Setter TargetName="DefaultTitleBar" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
