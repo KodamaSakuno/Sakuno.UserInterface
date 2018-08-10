@@ -15,6 +15,7 @@
                             <DockPanel>
                                 <DockPanel Name="DefaultTitleBar" DockPanel.Dock="Top">
                                     <uic:WindowCaptionButtons DockPanel.Dock="Right" />
+                                    <TextBlock Text="{TemplateBinding Title}" Margin="8, 0" VerticalAlignment="Center" />
                                 </DockPanel>
 
                                 <ContentPresenter Margin="{TemplateBinding Margin}" />
