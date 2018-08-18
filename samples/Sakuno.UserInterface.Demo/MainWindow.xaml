@@ -11,11 +11,44 @@
                   TextOptions.TextFormattingMode="Display">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="23" />
         </Grid.RowDefinitions>
 
-        <Rectangle Fill="{DynamicResource AccentBrushKey}" Grid.Row="2" />
+        <Grid HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <ControlTemplate x:Key="ControlsSample">
+                    <StackPanel>
+                        <CheckBox Margin="4">
+                            <TextBlock Text="CheckBox" />
+                        </CheckBox>
+
+                        <RadioButton Margin="4">
+                            <TextBlock Text="RadioButton" />
+                        </RadioButton>
+                        <RadioButton Margin="4">
+                            <TextBlock Text="RadioButton" />
+                        </RadioButton>
+                        <RadioButton Margin="4">
+                            <TextBlock Text="RadioButton" />
+                        </RadioButton>
+
+                        <Button Margin="4">
+                            <TextBlock Text="Button" />
+                        </Button>
+                    </StackPanel>
+                </ControlTemplate>
+            </Grid.Resources>
+
+            <Control Template="{StaticResource ControlsSample}" />
+            <Control Template="{StaticResource ControlsSample}" IsEnabled="False" Margin="4, 0" Grid.Column="1" />
+        </Grid>
+
+        <Rectangle Fill="{DynamicResource AccentBrushKey}" Grid.Row="1" />
     </Grid>
 </uic:ModernWindow>

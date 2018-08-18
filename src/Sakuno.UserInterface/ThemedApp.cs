@@ -55,6 +55,10 @@ namespace Sakuno.UserInterface
             Theme = Themes.Light;
             Accent = Accents.Blue;
 
+            const string CommonControlStylesUri = "pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls.xaml";
+
+            _root.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri(CommonControlStylesUri) });
+
             Resources.MergedDictionaries.Add(_root);
         }
 
