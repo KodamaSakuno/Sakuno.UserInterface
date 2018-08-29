@@ -9,6 +9,7 @@ namespace Sakuno.UserInterface.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
             BooleanUtil.GetBoxed(Equals(value, parameter) || (value != null && value.Equals(parameter)));
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotSupportedException();
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
+            Equals(value, BooleanUtil.True) ? parameter : Binding.DoNothing;
     }
 }
