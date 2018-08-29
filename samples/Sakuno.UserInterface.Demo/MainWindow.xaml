@@ -15,9 +15,10 @@
             <RowDefinition Height="23" />
         </Grid.RowDefinitions>
 
-        <Grid HorizontalAlignment="Left">
+        <Grid HorizontalAlignment="Left" Margin="4">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
@@ -28,7 +29,7 @@
                             <TextBlock Text="CheckBox" />
                         </CheckBox>
 
-                        <RadioButton Margin="4">
+                        <RadioButton IsChecked="True" Margin="4">
                             <TextBlock Text="RadioButton" />
                         </RadioButton>
                         <RadioButton Margin="4">
@@ -41,12 +42,57 @@
                         <Button Margin="4">
                             <TextBlock Text="Button" />
                         </Button>
+                        <ToggleButton Margin="4">
+                            <TextBlock Text="Toggle Button" />
+                        </ToggleButton>
+
+                        <TextBox Margin="4" />
+
+                        <ComboBox Margin="4">
+                            <ComboBoxItem>
+                                <TextBlock Text="1" />
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock Text="2" />
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock Text="3" />
+                            </ComboBoxItem>
+                        </ComboBox>
                     </StackPanel>
                 </ControlTemplate>
             </Grid.Resources>
 
-            <Control Template="{StaticResource ControlsSample}" />
-            <Control Template="{StaticResource ControlsSample}" IsEnabled="False" Margin="4, 0" Grid.Column="1" />
+            <StackPanel>
+                <Control Template="{StaticResource ControlsSample}" />
+
+                <TabControl Height="125" Margin="4, 4, 0, 0">
+                    <TabItem Header="Tab 1">
+                        <TextBlock Text="Tab 1" />
+                    </TabItem>
+                    <TabItem Header="Tab 2">
+                        <TextBlock Text="Tab 2" />
+                    </TabItem>
+                    <TabItem Header="Tab 3">
+                        <TextBlock Text="Tab 3" />
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+            <StackPanel Margin="4, 0" Grid.Column="1">
+                <Control Template="{StaticResource ControlsSample}" IsEnabled="False" />
+
+                <TabControl TabStripPlacement="Left" Height="125" Margin="4, 4, 0, 0">
+                    <TabItem Header="Tab 1">
+                        <TextBlock Text="Tab 1" />
+                    </TabItem>
+                    <TabItem Header="Tab 2">
+                        <TextBlock Text="Tab 2" />
+                    </TabItem>
+                    <TabItem Header="Tab 3">
+                        <TextBlock Text="Tab 3" />
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
         </Grid>
 
         <Rectangle Fill="{DynamicResource AccentBrushKey}" Grid.Row="1" />

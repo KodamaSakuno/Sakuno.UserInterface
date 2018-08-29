@@ -4,14 +4,24 @@
 
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/CheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/ComboBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/FocusVisualStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/ToggleButton.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ModernButtonStyle}" />
     <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ModernCheckBoxStyle}" />
+    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ModernComboBoxStyle}" />
+    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ModernComboBoxItemStyle}" />
     <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ModernRadioButtonStyle}" />
+    <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource ModernTabControlStyle}" />
+    <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ModernTabItemStyle}" />
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource ModernTextBoxStyle}" />
+    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ModernToggleButtonStyle}" />
 
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{StaticResource ModernFocusVisualStyle}" />
 
