@@ -23,7 +23,8 @@ namespace Sakuno.UserInterface.Interactivity.Primitives
 
         public AttachableObjectCollection()
         {
-            ((INotifyCollectionChanged)this).CollectionChanged += OnCollectionChanged;
+            if (!(bool)GetValue(DesignerProperties.IsInDesignModeProperty))
+                ((INotifyCollectionChanged)this).CollectionChanged += OnCollectionChanged;
 
             _snapshot = new List<T>();
         }
