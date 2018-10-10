@@ -10,9 +10,8 @@ namespace Sakuno.UserInterface.Controls
     [TemplatePart(Name = "PART_MaximizeButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_NormalizeButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_CloseButton", Type = typeof(Button))]
-    public class WindowCaptionButtons : Control
+    public sealed class WindowCaptionButtons : Control
     {
-        Window _owner;
         IntPtr _ownerHandle;
 
         Button _minimizeButton;
@@ -33,6 +32,13 @@ namespace Sakuno.UserInterface.Controls
         {
             var source = e.OriginalSource;
 
+            if (_ownerHandle == IntPtr.Zero)
+            {
+                var owner = Window.GetWindow(this);
+
+                _ownerHandle = new WindowInteropHelper(owner).Handle;
+            }
+
             if (source == _minimizeButton)
                 PostSystemCommand(NativeConstants.SystemCommand.SC_MINIMIZE);
             else if (source == _maximizeButton)
@@ -43,17 +49,6 @@ namespace Sakuno.UserInterface.Controls
                 PostSystemCommand(NativeConstants.SystemCommand.SC_CLOSE);
         }
 
-        protected override void OnInitialized(EventArgs e)
-        {
-            base.OnInitialized(e);
-
-            _owner = Window.GetWindow(this);
-
-            if (_owner == null)
-                return;
-
-            _ownerHandle = new WindowInteropHelper(_owner).Handle;
-        }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
