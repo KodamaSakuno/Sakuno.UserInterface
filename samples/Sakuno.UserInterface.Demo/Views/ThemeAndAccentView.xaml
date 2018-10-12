@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Sakuno.UserInterface.Demo.Views.ThemeAndAccentView"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="clr-namespace:Sakuno.UserInterface;assembly=Sakuno.UserInterface"
+             xmlns:uiconv="clr-namespace:Sakuno.UserInterface.Converters;assembly=Sakuno.UserInterface"
+             xmlns:uim="clr-namespace:Sakuno.UserInterface.Markup;assembly=Sakuno.UserInterface"
+             mc:Ignorable="d">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Theme:" Width="50" />
+
+            <RadioButton IsChecked="{Binding Theme, Converter={uim:ValueConverterSingleton {x:Type uiconv:IsEqualConverter}}, ConverterParameter={x:Static ui:Themes.Light}}" Margin="8, 0, 0, 0">
+                <TextBlock Text="Light" />
+            </RadioButton>
+            <RadioButton IsChecked="{Binding Theme, Converter={uim:ValueConverterSingleton {x:Type uiconv:IsEqualConverter}}, ConverterParameter={x:Static ui:Themes.Dark}}" Margin="8, 0, 0, 0">
+                <TextBlock Text="Dark" />
+            </RadioButton>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="0, 12, 0, 0">
+            <TextBlock Text="Accent:" Width="50" />
+
+            <RadioButton IsChecked="{Binding Accent, Converter={uim:ValueConverterSingleton {x:Type uiconv:IsEqualConverter}}, ConverterParameter={x:Static ui:Accents.Blue}}" Margin="8, 0, 0, 0">
+                <TextBlock Text="Blue" />
+            </RadioButton>
+            <RadioButton IsChecked="{Binding Accent, Converter={uim:ValueConverterSingleton {x:Type uiconv:IsEqualConverter}}, ConverterParameter={x:Static ui:Accents.Brown}}" Margin="8, 0, 0, 0">
+                <TextBlock Text="Brown" />
+            </RadioButton>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

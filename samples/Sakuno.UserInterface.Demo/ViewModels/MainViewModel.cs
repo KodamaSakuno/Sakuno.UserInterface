@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
-namespace Sakuno.UserInterface.Demo
+namespace Sakuno.UserInterface.Demo.ViewModels
 {
     class MainViewModel : INotifyPropertyChanged
     {
@@ -28,11 +23,30 @@ namespace Sakuno.UserInterface.Demo
             }
         }
 
+        Accent _accent;
+        public Accent Accent
+        {
+            get => _accent;
+            set
+            {
+                if (_accent != value)
+                {
+                    App.Accent = value;
+                    _accent = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainViewModel()
         {
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return;
+
             _theme = App.Theme;
+            _accent = App.Accent;
         }
 
         void NotifyPropertyChanged([CallerMemberName] string propertyName = null) =>

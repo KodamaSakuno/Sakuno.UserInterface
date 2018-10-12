@@ -5,95 +5,39 @@
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:uic="clr-namespace:Sakuno.UserInterface.Controls;assembly=Sakuno.UserInterface"
+                  xmlns:viewmodels="clr-namespace:Sakuno.UserInterface.Demo.ViewModels"
+                  xmlns:views="clr-namespace:Sakuno.UserInterface.Demo.Views"
                   mc:Ignorable="d"
                   Title="Demo"
                   Width="800" Height="600"
                   TextOptions.TextFormattingMode="Display">
+    <Window.DataContext>
+        <viewmodels:MainViewModel />
+    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="23" />
         </Grid.RowDefinitions>
 
-        <Grid HorizontalAlignment="Left" Margin="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250" />
-                <ColumnDefinition Width="250" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Common controls" />
+                </TabItem.Header>
 
-            <Grid.Resources>
-                <ControlTemplate x:Key="ControlsSample">
-                    <StackPanel>
-                        <CheckBox Margin="4">
-                            <TextBlock Text="CheckBox" />
-                        </CheckBox>
+                <views:CommonControlsView />
+            </TabItem>
 
-                        <RadioButton IsChecked="True" Margin="4">
-                            <TextBlock Text="RadioButton" />
-                        </RadioButton>
-                        <RadioButton Margin="4">
-                            <TextBlock Text="RadioButton" />
-                        </RadioButton>
-                        <RadioButton Margin="4">
-                            <TextBlock Text="RadioButton" />
-                        </RadioButton>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Theme &amp; Accent" />
+                </TabItem.Header>
 
-                        <Button Margin="4">
-                            <TextBlock Text="Button" />
-                        </Button>
-                        <ToggleButton Margin="4">
-                            <TextBlock Text="Toggle Button" />
-                        </ToggleButton>
-
-                        <TextBox Margin="4" />
-
-                        <ComboBox Margin="4">
-                            <ComboBoxItem>
-                                <TextBlock Text="1" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="2" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="3" />
-                            </ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                </ControlTemplate>
-            </Grid.Resources>
-
-            <StackPanel>
-                <Control Template="{StaticResource ControlsSample}" />
-
-                <TabControl Height="125" Margin="4, 4, 0, 0">
-                    <TabItem Header="Tab 1">
-                        <TextBlock Text="Tab 1" />
-                    </TabItem>
-                    <TabItem Header="Tab 2">
-                        <TextBlock Text="Tab 2" />
-                    </TabItem>
-                    <TabItem Header="Tab 3">
-                        <TextBlock Text="Tab 3" />
-                    </TabItem>
-                </TabControl>
-            </StackPanel>
-            <StackPanel Margin="4, 0" Grid.Column="1">
-                <Control Template="{StaticResource ControlsSample}" IsEnabled="False" />
-
-                <TabControl TabStripPlacement="Left" Height="125" Margin="4, 4, 0, 0">
-                    <TabItem Header="Tab 1">
-                        <TextBlock Text="Tab 1" />
-                    </TabItem>
-                    <TabItem Header="Tab 2">
-                        <TextBlock Text="Tab 2" />
-                    </TabItem>
-                    <TabItem Header="Tab 3">
-                        <TextBlock Text="Tab 3" />
-                    </TabItem>
-                </TabControl>
-            </StackPanel>
-        </Grid>
+                <views:ThemeAndAccentView />
+            </TabItem>
+        </TabControl>
 
         <Rectangle Fill="{DynamicResource AccentBrushKey}" Grid.Row="1" />
     </Grid>
