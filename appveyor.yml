@@ -1,4 +1,4 @@
-version: 0.3.0-pre3-{build}
+version: 0.3.0-pre4-{build}
 branches:
   only:
   - master
@@ -22,5 +22,5 @@ artifacts:
 deploy:
 - provider: NuGet
   api_key:
-    secure: uRlrRr17TJpGYMdBG1pTtK/OZws8RkQvrrzgF6lCdXytGjPhsPFXk86qvDzpMkOO
+    secure: T0e80U98+zD7uGDeVCUG3Y6WKYs850W8zvl6ETJq9QAnWfTSE1gRj7yLWMGfvJ6Z
   skip_symbols: true
