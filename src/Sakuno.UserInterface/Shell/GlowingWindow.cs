@@ -1,4 +1,4 @@
-﻿using Sakuno.SystemLayer;
+using Sakuno.SystemLayer;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -179,7 +179,6 @@ namespace Sakuno.UserInterface.Shell
                     return (IntPtr)NativeConstants.MouseActivate.MA_NOACTIVATE;
 
                 case NativeConstants.WindowMessage.WM_NCHITTEST:
-                    handled = true;
                     return (IntPtr)GetHitTest(lParam);
 
                 case NativeConstants.WindowMessage.WM_NCLBUTTONDOWN:
