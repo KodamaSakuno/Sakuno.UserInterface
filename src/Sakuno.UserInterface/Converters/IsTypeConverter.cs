@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace Sakuno.UserInterface.Converters
 {
+    [ValueConversion(typeof(object), typeof(Type))]
     public class IsTypeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var target = parameter as Type ?? throw new ArgumentException(nameof(parameter));
+            var target = parameter as Type;
+            if (target == null)
+                return DependencyProperty.UnsetValue;
+
             var type = value.GetType();
 
             if (target.IsInterface)
