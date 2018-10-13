@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Sakuno.Base" Version="0.3.2" />
-    <PackageReference Include="Sakuno.SystemLayer" Version="0.3.1" />
+    <PackageReference Include="Sakuno.SystemLayer" Version="0.3.2" />
   </ItemGroup>
 
   <ItemGroup>
