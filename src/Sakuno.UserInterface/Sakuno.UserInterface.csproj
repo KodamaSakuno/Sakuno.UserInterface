@@ -29,14 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="**\*.fx" />
-    <Resource Include="**\*.ps" />
-    <UpToDateCheckInput Include="**\*.fx" />
-    <UpToDateCheckInput Include="**\*.ps" />
+    <CompilePixelShader Include="**\*.fx" />
   </ItemGroup>
-
-  <Target Name="PreBuild" AfterTargets="PreBuildEvent">
-    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File $(SolutionDir)scripts\Execute-PreBuildEvent.ps1 -SolutionDir $(SolutionDir) -ProjectPath $(ProjectPath) -Configuration $(ConfigurationName) -TargetDir $(TargetDir) -TargetPath $(TargetPath)" />
-  </Target>
+  
+  <Import Project="CompilePixelShader.targets" />
 
 </Project>
