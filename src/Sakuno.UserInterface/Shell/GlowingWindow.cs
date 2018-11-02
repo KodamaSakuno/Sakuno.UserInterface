@@ -22,6 +22,8 @@ namespace Sakuno.UserInterface.Shell
         IntPtr _ownerHandle;
         IntPtr _previousWindow;
 
+        const int GlowSize = 8;
+
         Dock _position;
 
         InvalidationType _invalidationType;
@@ -80,6 +82,7 @@ namespace Sakuno.UserInterface.Shell
         static HwndSourceParameters CreateParameters(IntPtr ownerHandle) =>
             new HwndSourceParameters()
             {
+                WindowClassStyle = 8, // CS_DBLCLKS
                 WindowStyle = unchecked((int)(NativeEnums.WindowStyles.WS_POPUP | NativeEnums.WindowStyles.WS_CLIPSIBLINGS | NativeEnums.WindowStyles.WS_CLIPCHILDREN)),
                 ExtendedWindowStyle = (int)(NativeEnums.ExtendedWindowStyles.WS_EX_LAYERED | NativeEnums.ExtendedWindowStyles.WS_EX_TOOLWINDOW),
                 UsesPerPixelOpacity = true,
@@ -91,8 +94,6 @@ namespace Sakuno.UserInterface.Shell
 
             if (!_isVisible)
                 return;
-
-            const int GlowSize = 8;
 
             var glowSizeX = (int)Math.Round(GlowSize * CompositionTarget.TransformToDevice.M11);
             var glowSizeY = (int)Math.Round(GlowSize * CompositionTarget.TransformToDevice.M22);
@@ -178,21 +179,18 @@ namespace Sakuno.UserInterface.Shell
                     handled = true;
                     return (IntPtr)NativeConstants.MouseActivate.MA_NOACTIVATE;
 
-                case NativeConstants.WindowMessage.WM_NCHITTEST:
-                    return (IntPtr)GetHitTest(lParam);
-
-                case NativeConstants.WindowMessage.WM_NCLBUTTONDOWN:
-                case NativeConstants.WindowMessage.WM_NCLBUTTONDBLCLK:
-                case NativeConstants.WindowMessage.WM_NCRBUTTONDOWN:
-                case NativeConstants.WindowMessage.WM_NCRBUTTONDBLCLK:
-                case NativeConstants.WindowMessage.WM_NCMBUTTONDOWN:
-                case NativeConstants.WindowMessage.WM_NCMBUTTONDBLCLK:
-                case NativeConstants.WindowMessage.WM_NCXBUTTONDOWN:
-                case NativeConstants.WindowMessage.WM_NCXBUTTONDBLCLK:
+                case NativeConstants.WindowMessage.WM_LBUTTONDOWN:
+                case NativeConstants.WindowMessage.WM_LBUTTONDBLCLK:
+                case NativeConstants.WindowMessage.WM_RBUTTONDOWN:
+                case NativeConstants.WindowMessage.WM_RBUTTONDBLCLK:
+                case NativeConstants.WindowMessage.WM_MBUTTONDOWN:
+                case NativeConstants.WindowMessage.WM_MBUTTONDBLCLK:
+                case NativeConstants.WindowMessage.WM_XBUTTONDOWN:
+                case NativeConstants.WindowMessage.WM_XBUTTONDBLCLK:
                     handled = true;
 
                     NativeMethods.User32.PostMessageW(_ownerHandle, NativeConstants.WindowMessage.WM_ACTIVATE, (IntPtr)NativeConstants.MouseActivate.MA_ACTIVATEANDEAT, IntPtr.Zero);
-                    NativeMethods.User32.PostMessageW(_ownerHandle, message, wParam, IntPtr.Zero);
+                    NativeMethods.User32.PostMessageW(_ownerHandle, message - (NativeConstants.WindowMessage.WM_LBUTTONDOWN - NativeConstants.WindowMessage.WM_NCLBUTTONDOWN), (IntPtr)GetHitTest(lParam), IntPtr.Zero);
                     break;
             }
 
@@ -204,42 +202,47 @@ namespace Sakuno.UserInterface.Shell
             var x = lParam.LoWord();
             var y = lParam.HiWord();
 
-            const int GlowSize = 9;
+            const int GlowSize = 8;
+
+            var glowSizeX = (int)Math.Round(GlowSize * CompositionTarget.TransformToDevice.M11);
+            var glowSizeY = (int)Math.Round(GlowSize * CompositionTarget.TransformToDevice.M22);
+
+            NativeMethods.User32.GetWindowRect(Handle, out var rect);
 
             switch (_position)
             {
                 case Dock.Left:
-                    if (y < _ownerRect.Top + GlowSize)
+                    if (y < glowSizeY)
                         return NativeConstants.HitTest.HTTOPLEFT;
 
-                    if (y > _ownerRect.Bottom - GlowSize)
+                    if (y > rect.Height - glowSizeY)
                         return NativeConstants.HitTest.HTBOTTOMLEFT;
 
                     return NativeConstants.HitTest.HTLEFT;
 
                 case Dock.Top:
-                    if (x < _ownerRect.Left + GlowSize)
+                    if (x < glowSizeX * 2 + 1)
                         return NativeConstants.HitTest.HTTOPLEFT;
 
-                    if (x > _ownerRect.Right - GlowSize)
+                    if (x > rect.Width - glowSizeX * 2 - 1)
                         return NativeConstants.HitTest.HTTOPRIGHT;
 
                     return NativeConstants.HitTest.HTTOP;
 
                 case Dock.Right:
-                    if (y < _ownerRect.Top + GlowSize)
+                    if (y < glowSizeY * 2)
                         return NativeConstants.HitTest.HTTOPRIGHT;
 
-                    if (y > _ownerRect.Bottom - GlowSize)
+                    if (y > rect.Height - glowSizeY)
                         return NativeConstants.HitTest.HTBOTTOMRIGHT;
 
                     return NativeConstants.HitTest.HTRIGHT;
 
                 case Dock.Bottom:
-                    if (x < _ownerRect.Left + GlowSize)
+                    if (x < glowSizeX * 2 + 1)
                         return NativeConstants.HitTest.HTBOTTOMLEFT;
 
-                    if (x > _ownerRect.Right - GlowSize)
+                    if (x > rect.Width - glowSizeX * 2 - 1)
                         return NativeConstants.HitTest.HTBOTTOMRIGHT;
 
                     return NativeConstants.HitTest.HTBOTTOM;
