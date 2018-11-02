@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Sakuno.UserInterface.Shell
 {
-    class GlowingEdgeOpacityConverter : IValueConverter
+    class GlowEdgeOpacityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

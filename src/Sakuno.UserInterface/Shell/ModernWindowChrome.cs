@@ -18,7 +18,7 @@ namespace Sakuno.UserInterface.Shell
 
         int _deferChangeCount;
 
-        bool _isShowingGlowingWindow;
+        bool _isShowingGlowWindow;
         int _count;
 
         public ModernWindowChrome(ModernWindow window, IntPtr handle)
@@ -48,33 +48,33 @@ namespace Sakuno.UserInterface.Shell
                 edge.Window.Dispose();
         }
 
-        public void UpdateGlowingWindow(bool delayIfNecessary, in NativeStructs.RECT rect)
+        public void UpdateGlowWindow(bool delayIfNecessary, in NativeStructs.RECT rect)
         {
-            using (DeferGlowingChanges())
+            using (DeferGlowChanges())
             {
-                UpdateGlowingVisibilityCore(delayIfNecessary);
+                UpdateGlowWindowVisibilityCore(delayIfNecessary);
 
                 foreach (var edge in _edges)
                     edge.Window.UpdatePosition(rect);
             }
         }
-        public void UpdateGlowingVisibility(bool delayIfNecessary)
+        public void UpdateGlowWindowVisibility(bool delayIfNecessary)
         {
-            using (DeferGlowingChanges())
-                UpdateGlowingVisibilityCore(delayIfNecessary);
+            using (DeferGlowChanges())
+                UpdateGlowWindowVisibilityCore(delayIfNecessary);
         }
-        public void UpdateGlowingRect(in NativeStructs.RECT rect)
+        public void UpdateGlowWindowRect(in NativeStructs.RECT rect)
         {
-            using (DeferGlowingChanges())
+            using (DeferGlowChanges())
                 foreach (var edge in _edges)
                     edge.Window.UpdatePosition(rect);
         }
-        async void UpdateGlowingVisibilityCore(bool delayIfNecessary)
+        async void UpdateGlowWindowVisibilityCore(bool delayIfNecessary)
         {
             var shouldShow = NativeMethods.User32.IsWindowVisible(OwnerHandle) && !NativeMethods.User32.IsZoomed(OwnerHandle) && !NativeMethods.User32.IsIconic(OwnerHandle) &&
                 Owner.ResizeMode != ResizeMode.NoResize;
 
-            if (shouldShow == _isShowingGlowingWindow)
+            if (shouldShow == _isShowingGlowWindow)
                 return;
 
             if (shouldShow && SystemParameters.MinimizeAnimation && delayIfNecessary)
@@ -86,18 +86,18 @@ namespace Sakuno.UserInterface.Shell
                 _count--;
 
                 if (_count == 0)
-                    UpdateGlowingVisibility(false);
+                    UpdateGlowWindowVisibility(false);
             }
             else
             {
-                _isShowingGlowingWindow = shouldShow;
+                _isShowingGlowWindow = shouldShow;
 
                 foreach (var edge in _edges)
                     edge.Window.IsVisible = shouldShow;
             }
         }
 
-        public void UpdateGlowingWindowZOrder()
+        public void UpdateGlowWindowZOrder()
         {
             foreach (var edge in _edges)
                 edge.Window.UpdateZOrder();
@@ -113,7 +113,7 @@ namespace Sakuno.UserInterface.Shell
             return tasks.WhenAll();
         }
 
-        ChangeScope DeferGlowingChanges() => new ChangeScope(this);
+        ChangeScope DeferGlowChanges() => new ChangeScope(this);
 
         struct ChangeScope : IDisposable
         {

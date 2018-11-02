@@ -4,7 +4,7 @@
         <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/ModernWindow.xaml" />
         <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/WindowCaptionButtons.xaml" />
 
-        <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Shell/GlowingEdge.xaml" />
+        <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Shell/GlowEdge.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

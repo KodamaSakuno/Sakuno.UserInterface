@@ -7,7 +7,7 @@ using System.Windows.Interop;
 
 namespace Sakuno.UserInterface.Shell
 {
-    class GlowingWindow : HwndSource
+    class GlowWindow : HwndSource
     {
         [Flags]
         enum InvalidationType
@@ -67,7 +67,7 @@ namespace Sakuno.UserInterface.Shell
 
         TaskCompletionSource<object> _tcs;
 
-        public GlowingWindow(ModernWindowChrome owner, IntPtr previousWindow, Dock position) : base(CreateParameters(owner.OwnerHandle))
+        public GlowWindow(ModernWindowChrome owner, IntPtr previousWindow, Dock position) : base(CreateParameters(owner.OwnerHandle))
         {
             _owner = owner;
             _ownerHandle = owner.OwnerHandle;

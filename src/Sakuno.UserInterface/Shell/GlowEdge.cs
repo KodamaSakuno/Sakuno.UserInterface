@@ -3,10 +3,10 @@ using System.Windows.Controls;
 
 namespace Sakuno.UserInterface.Shell
 {
-    class GlowingEdge : Control
+    class GlowEdge : Control
     {
         static readonly DependencyPropertyKey PositionPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(Position), typeof(Dock), typeof(GlowingEdge),
+            DependencyProperty.RegisterReadOnly(nameof(Position), typeof(Dock), typeof(GlowEdge),
                 new PropertyMetadata(EnumUtil.GetBoxed(Dock.Left)));
 
         public static readonly DependencyProperty PositionProperty = PositionPropertyKey.DependencyProperty;
@@ -17,14 +17,14 @@ namespace Sakuno.UserInterface.Shell
             private set => SetValue(PositionPropertyKey, EnumUtil.GetBoxed(value));
         }
 
-        static GlowingEdge()
+        static GlowEdge()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(GlowingEdge), new FrameworkPropertyMetadata(typeof(GlowingEdge)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GlowEdge), new FrameworkPropertyMetadata(typeof(GlowEdge)));
 
-            SnapsToDevicePixelsProperty.OverrideMetadata(typeof(GlowingEdge), new FrameworkPropertyMetadata(BooleanUtil.True));
-            UseLayoutRoundingProperty.OverrideMetadata(typeof(GlowingEdge), new FrameworkPropertyMetadata(BooleanUtil.True));
+            SnapsToDevicePixelsProperty.OverrideMetadata(typeof(GlowEdge), new FrameworkPropertyMetadata(BooleanUtil.True));
+            UseLayoutRoundingProperty.OverrideMetadata(typeof(GlowEdge), new FrameworkPropertyMetadata(BooleanUtil.True));
         }
-        public GlowingEdge(Dock position)
+        public GlowEdge(Dock position)
         {
             Position = position;
         }

@@ -3,7 +3,6 @@ using Sakuno.UserInterface.Shell;
 using System;
 using System.Windows;
 using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Shell;
 
 namespace Sakuno.UserInterface.Controls
@@ -82,8 +81,8 @@ namespace Sakuno.UserInterface.Controls
             var isShowing = (info->flags & NativeEnums.SetWindowPosition.SWP_SHOWWINDOW) == 0;
             var rect = new NativeStructs.RECT(info->x, info->y, info->x + info->cx, info->y + info->cy);
 
-            _chrome.UpdateGlowingWindow(isShowing, rect);
-            _chrome.UpdateGlowingWindowZOrder();
+            _chrome.UpdateGlowWindow(isShowing, rect);
+            _chrome.UpdateGlowWindowZOrder();
         }
 
         async void OnDpiChanged(NativeStructs.RECT suggestedRect)
@@ -94,7 +93,7 @@ namespace Sakuno.UserInterface.Controls
 
             _suspendWindowPosChanged = false;
 
-            _chrome.UpdateGlowingRect(suggestedRect);
+            _chrome.UpdateGlowWindowRect(suggestedRect);
         }
     }
 }
