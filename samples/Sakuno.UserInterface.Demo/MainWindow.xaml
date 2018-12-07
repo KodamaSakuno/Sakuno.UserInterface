@@ -1,4 +1,4 @@
-﻿<uic:ModernWindow x:Class="Sakuno.UserInterface.Demo.MainWindow"
+<uic:ModernWindow x:Class="Sakuno.UserInterface.Demo.MainWindow"
                   x:ClassModifier="internal"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -36,6 +36,14 @@
                 </TabItem.Header>
 
                 <views:ThemeAndAccentView />
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="RelativePanel" />
+                </TabItem.Header>
+
+                <views:RelativePanelView />
             </TabItem>
         </TabControl>
 

@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Sakuno.UserInterface.Demo.Views.RelativePanelView"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:samples="clr-namespace:Sakuno.UserInterface.Demo.Views.Samples.RelativePanel"
+             mc:Ignorable="d">
+
+    <TabControl>
+        <TabItem>
+            <TabItem.Header>
+                <TextBlock Text="Sample 1" />
+            </TabItem.Header>
+
+            <samples:Sample1 />
+        </TabItem>
+
+        <TabItem>
+            <TabItem.Header>
+                <TextBlock Text="Sample 2" />
+            </TabItem.Header>
+
+            <samples:Sample2 />
+        </TabItem>
+
+        <TabItem>
+            <TabItem.Header>
+                <TextBlock Text="Sample 3" />
+            </TabItem.Header>
+
+            <samples:Sample3 />
+        </TabItem>
+    </TabControl>
+
+</UserControl>
