@@ -658,7 +658,7 @@ namespace Sakuno.UserInterface.Controls
 
                 _layoutInfos.Remove(layoutInfo);
 
-                SetLayoutInfo(element, null);
+                element.ClearValue(LayoutInfoProperty);
             }
 
             base.OnVisualChildrenChanged(visualAdded, visualRemoved);
