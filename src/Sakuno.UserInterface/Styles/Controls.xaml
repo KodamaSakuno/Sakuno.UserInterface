@@ -13,15 +13,15 @@
 
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ModernButtonStyle}" />
-    <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ModernCheckBoxStyle}" />
-    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ModernComboBoxStyle}" />
-    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ModernComboBoxItemStyle}" />
-    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ModernRadioButtonStyle}" />
-    <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource ModernTabControlStyle}" />
-    <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ModernTabItemStyle}" />
-    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource ModernTextBoxStyle}" />
-    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ModernToggleButtonStyle}" />
+    <Style TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}" />
+    <Style TargetType="CheckBox" BasedOn="{StaticResource ModernCheckBoxStyle}" />
+    <Style TargetType="ComboBox" BasedOn="{StaticResource ModernComboBoxStyle}" />
+    <Style TargetType="ComboBoxItem" BasedOn="{StaticResource ModernComboBoxItemStyle}" />
+    <Style TargetType="RadioButton" BasedOn="{StaticResource ModernRadioButtonStyle}" />
+    <Style TargetType="TabControl" BasedOn="{StaticResource ModernTabControlStyle}" />
+    <Style TargetType="TabItem" BasedOn="{StaticResource ModernTabItemStyle}" />
+    <Style TargetType="TextBox" BasedOn="{StaticResource ModernTextBoxStyle}" />
+    <Style TargetType="ToggleButton" BasedOn="{StaticResource ModernToggleButtonStyle}" />
 
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}" BasedOn="{StaticResource ModernFocusVisualStyle}" />
 

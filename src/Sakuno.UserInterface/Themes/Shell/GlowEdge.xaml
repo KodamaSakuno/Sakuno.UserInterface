@@ -4,9 +4,9 @@
 
     <rs:GlowEdgeOpacityConverter x:Key="GlowEdgeOpacityConverter" />
 
-    <Style TargetType="{x:Type rs:GlowEdge}">
+    <Style TargetType="rs:GlowEdge">
         <Style.Resources>
-            <Style TargetType="{x:Type Rectangle}">
+            <Style TargetType="Rectangle">
                 <Setter Property="SnapsToDevicePixels" Value="True" />
                 <Setter Property="UseLayoutRounding" Value="True" />
             </Style>
@@ -16,7 +16,7 @@
             <Trigger Property="Position" Value="Left">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type rs:GlowEdge}">
+                        <ControlTemplate TargetType="rs:GlowEdge">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="8" />
@@ -52,7 +52,7 @@
             <Trigger Property="Position" Value="Top">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type rs:GlowEdge}">
+                        <ControlTemplate TargetType="rs:GlowEdge">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="8" />
@@ -117,7 +117,7 @@
             <Trigger Property="Position" Value="Right">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type rs:GlowEdge}">
+                        <ControlTemplate TargetType="rs:GlowEdge">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="8" />
@@ -153,7 +153,7 @@
             <Trigger Property="Position" Value="Bottom">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type rs:GlowEdge}">
+                        <ControlTemplate TargetType="rs:GlowEdge">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="8" />

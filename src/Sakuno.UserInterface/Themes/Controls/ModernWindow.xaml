@@ -2,14 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:uic="clr-namespace:Sakuno.UserInterface.Controls">
 
-    <Style TargetType="{x:Type uic:ModernWindow}">
+    <Style TargetType="uic:ModernWindow">
         <Setter Property="BorderBrush" Value="{DynamicResource AccentBrushKey}" />
         <Setter Property="Background" Value="{DynamicResource ThemeBrushKey}" />
         <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type uic:ModernWindow}">
+                <ControlTemplate TargetType="uic:ModernWindow">
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
                         <AdornerDecorator>
                             <DockPanel>

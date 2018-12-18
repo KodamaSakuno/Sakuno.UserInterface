@@ -12,10 +12,10 @@
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Theme:" Width="50" />
 
-            <RadioButton IsChecked="{Binding Theme, Converter={uim:ValueConverterSingleton {x:Type uiconv:IsEqualConverter}}, ConverterParameter={x:Static ui:Themes.Light}}" Margin="8, 0, 0, 0">
+            <RadioButton IsChecked="{Binding Theme, Converter={uim:ValueConverterSingleton uiconv:IsEqualConverter}, ConverterParameter={x:Static ui:Themes.Light}}" Margin="8, 0, 0, 0">
                 <TextBlock Text="Light" />
             </RadioButton>
-            <RadioButton IsChecked="{Binding Theme, Converter={uim:ValueConverterSingleton {x:Type uiconv:IsEqualConverter}}, ConverterParameter={x:Static ui:Themes.Dark}}" Margin="8, 0, 0, 0">
+            <RadioButton IsChecked="{Binding Theme, Converter={uim:ValueConverterSingleton uiconv:IsEqualConverter}, ConverterParameter={x:Static ui:Themes.Dark}}" Margin="8, 0, 0, 0">
                 <TextBlock Text="Dark" />
             </RadioButton>
         </StackPanel>
@@ -23,10 +23,10 @@
         <StackPanel Orientation="Horizontal" Margin="0, 12, 0, 0">
             <TextBlock Text="Accent:" Width="50" />
 
-            <RadioButton IsChecked="{Binding Accent, Converter={uim:ValueConverterSingleton {x:Type uiconv:IsEqualConverter}}, ConverterParameter={x:Static ui:Accents.Blue}}" Margin="8, 0, 0, 0">
+            <RadioButton IsChecked="{Binding Accent, Converter={uim:ValueConverterSingleton uiconv:IsEqualConverter}, ConverterParameter={x:Static ui:Accents.Blue}}" Margin="8, 0, 0, 0">
                 <TextBlock Text="Blue" />
             </RadioButton>
-            <RadioButton IsChecked="{Binding Accent, Converter={uim:ValueConverterSingleton {x:Type uiconv:IsEqualConverter}}, ConverterParameter={x:Static ui:Accents.Brown}}" Margin="8, 0, 0, 0">
+            <RadioButton IsChecked="{Binding Accent, Converter={uim:ValueConverterSingleton uiconv:IsEqualConverter}, ConverterParameter={x:Static ui:Accents.Brown}}" Margin="8, 0, 0, 0">
                 <TextBlock Text="Brown" />
             </RadioButton>
         </StackPanel>
