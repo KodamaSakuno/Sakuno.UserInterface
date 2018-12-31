@@ -17,7 +17,7 @@
     <Company>Kodama Sakuno</Company>
     <Copyright>Copyright © 2018 Kodama Sakuno</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseUrl>https://github.com/KodamaSakuno/Sakuno.UserInterface/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/KodamaSakuno/Sakuno.UserInterface</PackageProjectUrl>
     <IncludeContentInPack>false</IncludeContentInPack>
     <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
