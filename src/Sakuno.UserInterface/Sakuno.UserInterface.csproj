@@ -15,7 +15,7 @@
     <Description>Sakuno's framework for WPF apps</Description>
     <Product>Sakuno.UserInterface</Product>
     <Company>Kodama Sakuno</Company>
-    <Copyright>Copyright © 2018 Kodama Sakuno</Copyright>
+    <Copyright>Copyright © 2018-2019 Kodama Sakuno</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/KodamaSakuno/Sakuno.UserInterface</PackageProjectUrl>
