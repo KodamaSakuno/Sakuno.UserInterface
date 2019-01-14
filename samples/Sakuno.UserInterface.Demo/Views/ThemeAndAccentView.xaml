@@ -8,7 +8,7 @@
              xmlns:uiconv="clr-namespace:Sakuno.UserInterface.Converters;assembly=Sakuno.UserInterface"
              xmlns:uim="clr-namespace:Sakuno.UserInterface.Markup;assembly=Sakuno.UserInterface"
              mc:Ignorable="d">
-    <StackPanel>
+    <StackPanel Margin="4">
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Theme:" Width="50" />
 
