@@ -21,7 +21,11 @@ namespace Sakuno.UserInterface.Markup
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            var target = serviceProvider as IProvideValueTarget ?? throw new ArgumentException(nameof(serviceProvider));
+            if (serviceProvider == null)
+                throw new ArgumentNullException(nameof(serviceProvider));
+
+            var target = serviceProvider.GetService<IProvideValueTarget>() ??
+                throw new InvalidOperationException("There is no ProvideValueTarget service in the service provider.");
             var targetProperty = target.TargetProperty;
 
             Type propertyType;
