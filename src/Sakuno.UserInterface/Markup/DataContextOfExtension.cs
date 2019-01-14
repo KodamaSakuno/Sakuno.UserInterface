@@ -7,11 +7,11 @@ using System.Xaml;
 namespace Sakuno.UserInterface.Markup
 {
     [ContentProperty(nameof(Name))]
-    public sealed class DataContextOf : MarkupExtension
+    public sealed class DataContextOfExtension : MarkupExtension
     {
         public string Name { get; }
 
-        public DataContextOf(string name)
+        public DataContextOfExtension(string name)
         {
             Name = name;
         }
