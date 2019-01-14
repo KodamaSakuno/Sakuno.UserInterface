@@ -4,7 +4,7 @@ using System.Windows.Data;
 using System.Windows.Markup;
 using System.Xaml;
 
-namespace Sakuno.KanColle.ShipCGManager.Markups
+namespace Sakuno.UserInterface.Markup
 {
     [ContentProperty(nameof(Name))]
     public sealed class DataContextOf : MarkupExtension
