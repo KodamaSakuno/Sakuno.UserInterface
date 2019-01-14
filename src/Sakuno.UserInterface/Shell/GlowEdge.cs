@@ -21,8 +21,8 @@ namespace Sakuno.UserInterface.Shell
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(GlowEdge), new FrameworkPropertyMetadata(typeof(GlowEdge)));
 
-            SnapsToDevicePixelsProperty.OverrideMetadata(typeof(GlowEdge), new FrameworkPropertyMetadata(BooleanUtil.True));
-            UseLayoutRoundingProperty.OverrideMetadata(typeof(GlowEdge), new FrameworkPropertyMetadata(BooleanUtil.True));
+            SnapsToDevicePixelsProperty.OverrideMetadata(typeof(GlowEdge), new FrameworkPropertyMetadata(BoxedConstants.Boolean.True));
+            UseLayoutRoundingProperty.OverrideMetadata(typeof(GlowEdge), new FrameworkPropertyMetadata(BoxedConstants.Boolean.True));
         }
         public GlowEdge(Dock position)
         {

@@ -8,7 +8,7 @@ namespace Sakuno.UserInterface.Controls
     {
         public static readonly DependencyProperty RadiusProperty =
             DependencyProperty.RegisterAttached("Radius", typeof(double), typeof(PolarPanel),
-                new FrameworkPropertyMetadata(DoubleUtil.Zero, OnPositioningChanged));
+                new FrameworkPropertyMetadata(BoxedConstants.Double.Zero, OnPositioningChanged));
 
         public static double GetRadius(UIElement element) =>
             (double)element.GetValue(RadiusProperty);
@@ -17,7 +17,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty AngleProperty =
             DependencyProperty.RegisterAttached("Angle", typeof(double), typeof(PolarPanel),
-                new FrameworkPropertyMetadata(DoubleUtil.Zero, OnPositioningChanged));
+                new FrameworkPropertyMetadata(BoxedConstants.Double.Zero, OnPositioningChanged));
 
         public static double GetAngle(UIElement element) =>
             (double)element.GetValue(AngleProperty);

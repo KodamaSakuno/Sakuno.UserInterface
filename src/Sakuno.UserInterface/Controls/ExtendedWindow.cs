@@ -22,7 +22,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty AutoRotationProperty =
             DependencyProperty.Register(nameof(AutoRotation), typeof(bool), typeof(ExtendedWindow),
-                new PropertyMetadata(BooleanUtil.False));
+                new PropertyMetadata(BoxedConstants.Boolean.False));
 
         public bool AutoRotation
         {
@@ -34,8 +34,8 @@ namespace Sakuno.UserInterface.Controls
 
         static ExtendedWindow()
         {
-            SnapsToDevicePixelsProperty.OverrideMetadata(typeof(ExtendedWindow), new FrameworkPropertyMetadata(BooleanUtil.True));
-            UseLayoutRoundingProperty.OverrideMetadata(typeof(ExtendedWindow), new FrameworkPropertyMetadata(BooleanUtil.True));
+            SnapsToDevicePixelsProperty.OverrideMetadata(typeof(ExtendedWindow), new FrameworkPropertyMetadata(BoxedConstants.Boolean.True));
+            UseLayoutRoundingProperty.OverrideMetadata(typeof(ExtendedWindow), new FrameworkPropertyMetadata(BoxedConstants.Boolean.True));
         }
 
         protected override void OnSourceInitialized(EventArgs e)

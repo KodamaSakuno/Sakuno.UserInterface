@@ -23,7 +23,7 @@ namespace Sakuno.UserInterface.Media.Effects
 
         public static readonly DependencyProperty DesaturationFactorProperty =
             DependencyProperty.Register(nameof(DesaturationFactor), typeof(double), typeof(GrayscaleEffect),
-                new UIPropertyMetadata(DoubleUtil.Zero, PixelShaderConstantCallback(0)), IsDesaturationFactorValid);
+                new UIPropertyMetadata(BoxedConstants.Double.Zero, PixelShaderConstantCallback(0)), IsDesaturationFactorValid);
 
         static bool IsDesaturationFactorValid(object boxedValue)
         {

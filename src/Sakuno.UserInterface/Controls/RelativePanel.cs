@@ -12,7 +12,7 @@ namespace Sakuno.UserInterface.Controls
     {
         public static readonly DependencyProperty AlignLeftWithPanelProperty =
             DependencyProperty.RegisterAttached("AlignLeftWithPanel", typeof(bool), typeof(RelativePanel),
-                new FrameworkPropertyMetadata(BooleanUtil.False,
+                new FrameworkPropertyMetadata(BoxedConstants.Boolean.False,
                     FrameworkPropertyMetadataOptions.AffectsParentMeasure | FrameworkPropertyMetadataOptions.AffectsParentArrange,
                     OnHorizontalDirectionPropertyChanged));
 
@@ -23,7 +23,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty AlignTopWithPanelProperty =
             DependencyProperty.RegisterAttached("AlignTopWithPanel", typeof(bool), typeof(RelativePanel),
-                new FrameworkPropertyMetadata(BooleanUtil.False,
+                new FrameworkPropertyMetadata(BoxedConstants.Boolean.False,
                     FrameworkPropertyMetadataOptions.AffectsParentMeasure | FrameworkPropertyMetadataOptions.AffectsParentArrange,
                     OnVerticalDirectionPropertyChanged));
 
@@ -34,7 +34,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty AlignRightWithPanelProperty =
             DependencyProperty.RegisterAttached("AlignRightWithPanel", typeof(bool), typeof(RelativePanel),
-                new FrameworkPropertyMetadata(BooleanUtil.False,
+                new FrameworkPropertyMetadata(BoxedConstants.Boolean.False,
                     FrameworkPropertyMetadataOptions.AffectsParentMeasure | FrameworkPropertyMetadataOptions.AffectsParentArrange,
                     OnHorizontalDirectionPropertyChanged));
 
@@ -45,7 +45,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty AlignBottomWithPanelProperty =
             DependencyProperty.RegisterAttached("AlignBottomWithPanel", typeof(bool), typeof(RelativePanel),
-                new FrameworkPropertyMetadata(BooleanUtil.False,
+                new FrameworkPropertyMetadata(BoxedConstants.Boolean.False,
                     FrameworkPropertyMetadataOptions.AffectsParentMeasure | FrameworkPropertyMetadataOptions.AffectsParentArrange,
                     OnVerticalDirectionPropertyChanged));
 
@@ -152,7 +152,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty AlignHorizontalCenterWithPanelProperty =
             DependencyProperty.RegisterAttached("AlignHorizontalCenterWithPanel", typeof(bool), typeof(RelativePanel),
-                new FrameworkPropertyMetadata(BooleanUtil.False,
+                new FrameworkPropertyMetadata(BoxedConstants.Boolean.False,
                     FrameworkPropertyMetadataOptions.AffectsParentMeasure | FrameworkPropertyMetadataOptions.AffectsParentArrange,
                     OnHorizontalDirectionPropertyChanged));
 
@@ -175,7 +175,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty AlignVerticalCenterWithPanelProperty =
             DependencyProperty.RegisterAttached("AlignVerticalCenterWithPanel", typeof(bool), typeof(RelativePanel),
-                new FrameworkPropertyMetadata(BooleanUtil.False,
+                new FrameworkPropertyMetadata(BoxedConstants.Boolean.False,
                     FrameworkPropertyMetadataOptions.AffectsParentMeasure | FrameworkPropertyMetadataOptions.AffectsParentArrange,
                     OnVerticalDirectionPropertyChanged));
 

@@ -13,7 +13,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty HideDefaultTitleBarProperty =
             DependencyProperty.Register(nameof(HideDefaultTitleBar), typeof(bool), typeof(ModernWindow),
-                new PropertyMetadata(BooleanUtil.False));
+                new PropertyMetadata(BoxedConstants.Boolean.False));
 
         public bool HideDefaultTitleBar
         {

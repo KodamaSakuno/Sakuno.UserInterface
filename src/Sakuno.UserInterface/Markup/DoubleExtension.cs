@@ -12,11 +12,11 @@ namespace Sakuno.UserInterface.Markup
         public DoubleExtension(double value)
         {
             if (DoubleUtil.IsCloseToZero(value))
-                _boxedValue = DoubleUtil.Zero;
+                _boxedValue = BoxedConstants.Double.Zero;
             else if (DoubleUtil.IsCloseToOne(value))
-                _boxedValue = DoubleUtil.One;
+                _boxedValue = BoxedConstants.Double.One;
             else if (value.IsNaN())
-                _boxedValue = DoubleUtil.NaN;
+                _boxedValue = BoxedConstants.Double.NaN;
 
             _boxedValue = value;
         }

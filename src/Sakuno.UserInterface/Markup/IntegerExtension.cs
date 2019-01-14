@@ -12,7 +12,7 @@ namespace Sakuno.UserInterface.Markup
         public IntegerExtension(int value)
         {
             if (value == 0)
-                _boxedValue = Int32Util.Zero;
+                _boxedValue = BoxedConstants.Int32.Zero;
             else
                 _boxedValue = value;
         }

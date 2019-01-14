@@ -6,7 +6,7 @@ namespace Sakuno.UserInterface.Interactivity.Primitives
     {
         public static readonly DependencyProperty UseTransitionsProperty =
             DependencyProperty.Register(nameof(UseTransitions), typeof(bool), typeof(VisualStateTriggerAction),
-                new PropertyMetadata(BooleanUtil.True));
+                new PropertyMetadata(BoxedConstants.Boolean.True));
 
         public bool UseTransitions
         {

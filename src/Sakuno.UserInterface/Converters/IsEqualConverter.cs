@@ -12,6 +12,6 @@ namespace Sakuno.UserInterface.Converters
             BooleanUtil.GetBoxed(Equals(value, parameter));
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
-            Equals(value, BooleanUtil.True) ? parameter : DependencyProperty.UnsetValue;
+            Equals(value, BoxedConstants.Boolean.True) ? parameter : DependencyProperty.UnsetValue;
     }
 }
