@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sakuno.UserInterface.Data;
+using System;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -27,10 +28,13 @@ namespace Sakuno.UserInterface.Markup
             if (Name.IsNullOrEmpty())
                 throw new InvalidOperationException("It must have a Name to resolve.");
 
-            if (!(xamlNameResolver.Resolve(Name) is FrameworkElement element))
-                throw new InvalidOperationException("The resolved object must be of type FrameworkElement.");
+            if (xamlNameResolver.Resolve(Name) is FrameworkElement element)
+                return new Binding(nameof(FrameworkElement.DataContext)) { Source = element, Mode = BindingMode.OneWay }.ProvideValue(serviceProvider);
 
-            return new Binding(nameof(FrameworkElement.DataContext)) { Source = element, Mode = BindingMode.OneWay }.ProvideValue(serviceProvider);
+            if (new StaticResourceExtension(Name).ProvideValue(serviceProvider) is BindingProxy proxy)
+                return new Binding(nameof(BindingProxy.Data)) { Source = proxy, Mode = BindingMode.OneWay }.ProvideValue(serviceProvider);
+
+            throw new InvalidOperationException("The provided name must be the one of a fully initialized FrameworkElement or a resource of type BindingProxy.");
         }
     }
 }
