@@ -31,7 +31,7 @@ namespace Sakuno.UserInterface.Interactivity
             SetValue(ConditionsPropertyKey, _conditions = new ConditionCollection());
         }
 
-        public override bool Evaluate()
+        public override bool Evaluate(object args)
         {
             var combinationType = CombinationType;
 
@@ -39,7 +39,7 @@ namespace Sakuno.UserInterface.Interactivity
 
             foreach (var condition in _conditions)
             {
-                result = condition.Evaluate();
+                result = condition.Evaluate(args);
 
                 if (!result && combinationType == ConditionCombinationType.And)
                     return false;

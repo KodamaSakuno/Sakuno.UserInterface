@@ -33,7 +33,7 @@ namespace Sakuno.UserInterface.Interactivity
             set => SetValue(OperatorProperty, EnumUtil.GetBoxed(value));
         }
 
-        public override bool Evaluate()
+        public override bool Evaluate(object args)
         {
             this.UpdateBindingTarget(LeftOperandProperty);
             this.UpdateBindingTarget(RightOperandProperty);

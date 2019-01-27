@@ -100,7 +100,7 @@ namespace Sakuno.UserInterface.Interactivity.Primitives
         protected void InvokeActions(object args)
         {
             var condition = Condition;
-            if (condition != null && !condition.Evaluate())
+            if (condition != null && !condition.Evaluate(args))
                 return;
 
             var throttleDueTime = ThrottleDueTime;

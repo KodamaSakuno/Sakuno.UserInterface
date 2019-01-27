@@ -4,6 +4,6 @@ namespace Sakuno.UserInterface.Interactivity.Primitives
 {
     public abstract class ConditionBase : Freezable
     {
-        public abstract bool Evaluate();
+        public abstract bool Evaluate(object args);
     }
 }
