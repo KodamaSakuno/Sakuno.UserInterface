@@ -9,8 +9,13 @@ namespace Sakuno.UserInterface.Converters
     [ValueConversion(typeof(bool?), typeof(Visibility))]
     public sealed class BooleanToInvisibilityConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
-            EnumUtil.GetBoxed(Equals(value, BoxedConstants.Boolean.True) ? Visibility.Collapsed : Visibility.Visible);
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is bool boolean)
+                return EnumUtil.GetBoxed(boolean ? Visibility.Collapsed : Visibility.Visible);
+
+            return DependencyProperty.UnsetValue;
+        }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

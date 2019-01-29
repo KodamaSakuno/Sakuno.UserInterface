@@ -9,7 +9,7 @@ namespace Sakuno.UserInterface.Converters
     public sealed class NotNullToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
-            EnumUtil.GetBoxed(value != null ? Visibility.Visible : Visibility.Collapsed);
+            EnumUtil.GetBoxed(value is null ? Visibility.Collapsed : Visibility.Visible);
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotSupportedException();
     }
