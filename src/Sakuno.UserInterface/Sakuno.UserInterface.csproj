@@ -1,13 +1,9 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
-    <OutputType>Library</OutputType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <TargetFrameworks>netcoreapp3.0;net462</TargetFrameworks>
     <RootNamespace>Sakuno.UserInterface</RootNamespace>
     <AssemblyName>Sakuno.UserInterface</AssemblyName>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <OutputPath>$(SolutionDir)artifacts\$(Configuration)\</OutputPath>
     <PackageId>Sakuno.UserInterface</PackageId>
     <Version>0.3.0-pre7</Version>
@@ -20,12 +16,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/KodamaSakuno/Sakuno.UserInterface</PackageProjectUrl>
     <IncludeContentInPack>false</IncludeContentInPack>
-    <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sakuno.Base" Version="0.4.1" />
-    <PackageReference Include="Sakuno.SystemLayer" Version="0.3.2" />
+    <PackageReference Include="Sakuno.Base" Version="0.5" />
+    <PackageReference Include="Sakuno.SystemLayer" Version="0.4" />
   </ItemGroup>
 
   <ItemGroup>
