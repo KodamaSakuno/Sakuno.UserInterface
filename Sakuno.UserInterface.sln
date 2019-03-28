@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28721.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakuno.UserInterface", "src\Sakuno.UserInterface\Sakuno.UserInterface.csproj", "{3761E9AB-973B-4162-8D75-228C07D93FCB}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{0A070316-0A15-4F32-9877-997CCBDC2C96}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakuno.UserInterface.Demo", "samples\Sakuno.UserInterface.Demo\Sakuno.UserInterface.Demo.csproj", "{04848FF5-2610-44EA-AD30-82452CB9D1A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{63EAFF32-29B7-4582-9DB5-FC55DF56D90D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakuno.UserInterface.Tests", "tests\Sakuno.UserInterface.Tests\Sakuno.UserInterface.Tests.csproj", "{060CF8E5-B986-4932-87CC-6908D489914D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +33,17 @@ Global
 		{04848FF5-2610-44EA-AD30-82452CB9D1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04848FF5-2610-44EA-AD30-82452CB9D1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04848FF5-2610-44EA-AD30-82452CB9D1A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{060CF8E5-B986-4932-87CC-6908D489914D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{060CF8E5-B986-4932-87CC-6908D489914D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{060CF8E5-B986-4932-87CC-6908D489914D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{060CF8E5-B986-4932-87CC-6908D489914D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{04848FF5-2610-44EA-AD30-82452CB9D1A3} = {0A070316-0A15-4F32-9877-997CCBDC2C96}
+		{060CF8E5-B986-4932-87CC-6908D489914D} = {63EAFF32-29B7-4582-9DB5-FC55DF56D90D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C5A52DC-9D7D-4589-BD5C-BD6941C7D71A}
