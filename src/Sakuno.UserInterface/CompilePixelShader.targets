@@ -5,9 +5,9 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <_SDKInstallationFolder Condition="'$(_WindowsKitsPath)' == ''">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v10.0', 'InstallationFolder', null, RegistryView.Registry32, RegistryView.Default))</_SDKInstallationFolder>
-        <_SDKProductVersion Condition="'$(_SDKProductVersion)' == ''">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v10.0', 'ProductVersion', null, RegistryView.Registry32, RegistryView.Default))</_SDKProductVersion>
-        <_SDKProductVersion Condition="'$(_SDKProductVersion)' == $([System.Version]::Parse('$(_SDKProductVersion)').ToString(3))">$(_SDKProductVersion).0</_SDKProductVersion>
+        <_SDKInstallationFolder Condition=" '$(_SDKInstallationFolder)' == '' ">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v10.0', 'InstallationFolder', null, RegistryView.Registry32, RegistryView.Default))</_SDKInstallationFolder>
+        <_SDKProductVersion Condition=" '$(_SDKProductVersion)' == '' ">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v10.0', 'ProductVersion', null, RegistryView.Registry32, RegistryView.Default))</_SDKProductVersion>
+        <_SDKProductVersion Condition=" '$(_SDKProductVersion)' != '' AND '$(_SDKProductVersion)' == $([System.Version]::Parse('$(_SDKProductVersion)').ToString(3)) ">$(_SDKProductVersion).0</_SDKProductVersion>
         <_FxcFilename Condition="'$(_FxcFilename)' == ''">$(_SDKInstallationFolder)bin\$(_SDKProductVersion)\x86\fxc.exe</_FxcFilename>
         <_FxcFilename Condition="'$(_FxcFilename)' == ''">$(DXSDK_DIR)Utilities\bin\x86\fxc.exe</_FxcFilename>
     </PropertyGroup>
