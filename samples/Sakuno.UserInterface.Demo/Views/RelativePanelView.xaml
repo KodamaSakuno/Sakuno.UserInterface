@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Sakuno.UserInterface.Demo.Views.RelativePanelView"
+<UserControl x:Class="Sakuno.UserInterface.Demo.Views.RelativePanelView"
              x:ClassModifier="internal"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,7 +7,7 @@
              xmlns:samples="clr-namespace:Sakuno.UserInterface.Demo.Views.Samples.RelativePanel"
              mc:Ignorable="d">
 
-    <TabControl>
+    <TabControl BorderBrush="{DynamicResource BorderBrushKey}" BorderThickness="1">
         <TabItem>
             <TabItem.Header>
                 <TextBlock Text="Sample 1" />

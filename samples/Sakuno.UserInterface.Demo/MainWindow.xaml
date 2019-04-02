@@ -32,6 +32,14 @@
 
             <TabItem>
                 <TabItem.Header>
+                    <TextBlock Text="TabControl" />
+                </TabItem.Header>
+
+                <views:TabControlView />
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
                     <TextBlock Text="Theme &amp; Accent" />
                 </TabItem.Header>
 

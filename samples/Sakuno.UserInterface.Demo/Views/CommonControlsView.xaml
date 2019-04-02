@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:Sakuno.UserInterface.Controls;assembly=Sakuno.UserInterface"
              mc:Ignorable="d">
     <Grid HorizontalAlignment="Left" Margin="4">
         <Grid.ColumnDefinitions>
@@ -55,33 +56,9 @@
 
         <StackPanel>
             <Control Template="{StaticResource ControlsSample}" />
-
-            <TabControl Height="125" Margin="4, 4, 0, 0">
-                <TabItem Header="Tab 1">
-                    <TextBlock Text="Tab 1" />
-                </TabItem>
-                <TabItem Header="Tab 2">
-                    <TextBlock Text="Tab 2" />
-                </TabItem>
-                <TabItem Header="Tab 3">
-                    <TextBlock Text="Tab 3" />
-                </TabItem>
-            </TabControl>
         </StackPanel>
         <StackPanel Margin="4, 0" Grid.Column="1">
             <Control Template="{StaticResource ControlsSample}" IsEnabled="False" />
-
-            <TabControl TabStripPlacement="Left" Height="125" Margin="4, 4, 0, 0">
-                <TabItem Header="Tab 1">
-                    <TextBlock Text="Tab 1" />
-                </TabItem>
-                <TabItem Header="Tab 2">
-                    <TextBlock Text="Tab 2" />
-                </TabItem>
-                <TabItem Header="Tab 3">
-                    <TextBlock Text="Tab 3" />
-                </TabItem>
-            </TabControl>
         </StackPanel>
     </Grid>
 </UserControl>
