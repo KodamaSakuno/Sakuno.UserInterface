@@ -144,7 +144,7 @@ namespace Sakuno.UserInterface.Shell
 
         public void CommitChanges()
         {
-            if (_invalidationType.Has(InvalidationType.Position | InvalidationType.Size | InvalidationType.Visibility))
+            if (_invalidationType.HasAny(InvalidationType.Position | InvalidationType.Size | InvalidationType.Visibility))
             {
                 var flags = NativeEnums.SetWindowPosition.SWP_NOZORDER | NativeEnums.SetWindowPosition.SWP_NOACTIVATE;
 
