@@ -53,10 +53,10 @@ namespace Sakuno.UserInterface.Controls
         {
             base.OnApplyTemplate();
 
-            _minimizeButton = Template.FindName("PART_MinimizeButton", this) as Button;
-            _maximizeButton = Template.FindName("PART_MaximizeButton", this) as Button;
-            _normalizeButton = Template.FindName("PART_NormalizeButton", this) as Button;
-            _closeButton = Template.FindName("PART_CloseButton", this) as Button;
+            _minimizeButton = GetTemplateChild("PART_MinimizeButton") as Button;
+            _maximizeButton = GetTemplateChild("PART_MaximizeButton") as Button;
+            _normalizeButton = GetTemplateChild("PART_NormalizeButton") as Button;
+            _closeButton = GetTemplateChild("PART_CloseButton") as Button;
         }
 
         void PostSystemCommand(NativeConstants.SystemCommand systemCommand) =>
