@@ -1,6 +1,5 @@
 ﻿using Sakuno.SystemLayer;
 using System;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 
@@ -48,9 +47,9 @@ namespace Sakuno.UserInterface.Controls
 
             InitializeScreenOrientation();
         }
-        void InitializeScreenOrientation()
+        unsafe void InitializeScreenOrientation()
         {
-            var info = new NativeStructs.MONITORINFO() { cbSize = Marshal.SizeOf<NativeStructs.MONITORINFO>() };
+            var info = new NativeStructs.MONITORINFO() { cbSize = sizeof(NativeStructs.MONITORINFO) };
             var monitor = NativeMethods.User32.MonitorFromWindow(Handle, NativeConstants.MFW.MONITOR_DEFAULTTONEAREST);
 
             NativeMethods.User32.GetMonitorInfo(monitor, ref info);
