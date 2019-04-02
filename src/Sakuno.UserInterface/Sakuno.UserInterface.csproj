@@ -20,8 +20,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sakuno.Base" Version="0.5" />
-    <PackageReference Include="Sakuno.SystemLayer" Version="0.4" />
+    <PackageReference Include="Sakuno.Base" Version="0.5.1" />
+    <PackageReference Include="Sakuno.SystemLayer" Version="0.4.1" />
   </ItemGroup>
 
   <ItemGroup>
