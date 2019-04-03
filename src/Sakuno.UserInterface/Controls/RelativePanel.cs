@@ -525,7 +525,7 @@ namespace Sakuno.UserInterface.Controls
 
                 var element = info.Element;
 
-                element.Measure(new Size(availableWidth, height));
+                element.Measure(new Size(Math.Max(availableWidth, 0), height));
 
                 if (!info.IsHorizontalDirectionCenterAlignment)
                 {
