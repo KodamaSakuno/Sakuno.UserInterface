@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -594,7 +594,7 @@ namespace Sakuno.UserInterface.Controls
 
                 var element = info.Element;
 
-                element.Measure(new Size(width - info.Right - info.Left, availableHeight));
+                element.Measure(new Size(Math.Max(width - info.Left - info.Right, 0), Math.Max(availableHeight, 0)));
 
                 if (!info.IsVerticalDirectionCenterAlignment)
                 {
@@ -630,7 +630,7 @@ namespace Sakuno.UserInterface.Controls
             var height = finalSize.Height;
 
             foreach (var info in _layoutInfos)
-                info.Element.Arrange(new Rect(info.Left, info.Top, width - info.Left - info.Right, height - info.Top - info.Bottom));
+                info.Element.Arrange(new Rect(info.Left, info.Top, Math.Max(width - info.Left - info.Right, 0), Math.Max(height - info.Top - info.Bottom, 0)));
 
             return finalSize;
         }
