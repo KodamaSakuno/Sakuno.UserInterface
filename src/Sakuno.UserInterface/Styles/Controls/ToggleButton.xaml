@@ -42,7 +42,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="FlatToggleButtonStyle" TargetType="ToggleButton" BasedOn="{StaticResource ModernToggleButtonStyle}">
+    <Style x:Key="ModernFlatToggleButtonStyle" TargetType="ToggleButton" BasedOn="{StaticResource ModernToggleButtonStyle}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>

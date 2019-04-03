@@ -26,8 +26,7 @@ namespace Sakuno.UserInterface.Controls
 
         static void OnPositioningChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var element = d as UIElement;
-            if (element == null)
+            if (!(d is UIElement element))
                 return;
 
             var parent = element.GetParent<PolarPanel>();
