@@ -15,13 +15,19 @@
         <viewmodels:MainViewModel />
     </Window.DataContext>
 
-    <Grid>
+    <Grid Background="{DynamicResource BackgroundBrushKey}" UseLayoutRounding="True">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="23" />
         </Grid.RowDefinitions>
 
-        <TabControl>
+        <TabControl TabStripPlacement="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+                    <Setter Property="Height" Value="40" />
+                </Style>
+            </TabControl.ItemContainerStyle>
+
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Text="Common controls" />
