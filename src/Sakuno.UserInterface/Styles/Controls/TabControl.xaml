@@ -14,7 +14,7 @@
                 <ControlTemplate TargetType="TabItem">
                     <uic:RectangleBorder x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"
                                          IsLeftSideVisible="False" IsTopSideVisible="False" IsRightSideVisible="False" IsBottomSideVisible="False">
-                        <ContentPresenter ContentSource="Header" />
+                        <ContentPresenter ContentSource="Header" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=TabControl}}" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=TabControl}}" />
                     </uic:RectangleBorder>
 
                     <ControlTemplate.Triggers>
@@ -50,13 +50,18 @@
 
                             <Setter TargetName="Border" Property="IsTopSideVisible" Value="True" />
                         </MultiTrigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackgroundBrushKey}" />
-                        </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}" />
+                            <Setter Property="Background" Value="{DynamicResource ThemeBrushKey}" />
                             <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="False" />
+                                <Condition SourceName="Border" Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}" />
+                        </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="True" />
@@ -104,15 +109,16 @@
     </Style>
 
     <Style x:Key="ModernTabControlStyle" TargetType="TabControl">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="{DynamicResource ThemeBrushKey}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
         <Setter Property="Padding" Value="4" />
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabControl">
-                    <Border Background="{TemplateBinding Background}">
+                    <Border Background="Transparent">
                         <DockPanel KeyboardNavigation.TabNavigation="Local">
                             <DockPanel x:Name="Header">
                                 <StackPanel Name="HeaderPanel" IsItemsHost="True" KeyboardNavigation.TabIndex="1" />
@@ -120,7 +126,7 @@
                                                      IsLeftSideVisible="False" IsTopSideVisible="False" IsRightSideVisible="False" IsBottomSideVisible="False" />
                             </DockPanel>
 
-                            <uic:RectangleBorder x:Name="ContentPanel" Background="{DynamicResource ActiveBackgroundBrushKey}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.TabIndex="2">
+                            <uic:RectangleBorder x:Name="ContentPanel" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.TabIndex="2">
                                 <ContentPresenter Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" />
                             </uic:RectangleBorder>
                         </DockPanel>
