@@ -28,7 +28,6 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="TabControl" BasedOn="{StaticResource {x:Type TabControl}}">
-                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushKey}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="Margin" Value="8" />
 
