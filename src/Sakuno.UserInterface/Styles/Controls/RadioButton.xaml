@@ -21,9 +21,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="100"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <Ellipse Name="Mark" MinWidth="6" MinHeight="6" Margin="2" Fill="{DynamicResource ForegroundBrushKey}" Visibility="Hidden" />
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1">
+                            <Ellipse Name="Mark" MinWidth="5" MinHeight="5" Margin="3" Fill="{DynamicResource ForegroundBrushKey}" Visibility="Hidden" />
                         </Border>
                         <ContentPresenter ContentSource="Content" RecognizesAccessKey="True" Focusable="False"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
