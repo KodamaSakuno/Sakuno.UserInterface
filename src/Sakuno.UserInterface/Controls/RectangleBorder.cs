@@ -19,7 +19,7 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty BorderBrushProperty =
             DependencyProperty.Register(nameof(BorderBrush), typeof(Brush), typeof(RectangleBorder),
-                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
+                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender, OnBorderPenSubPropertyChanged));
 
         public Brush BorderBrush
         {
@@ -29,12 +29,22 @@ namespace Sakuno.UserInterface.Controls
 
         public static readonly DependencyProperty BorderThicknessProperty =
             DependencyProperty.Register(nameof(BorderThickness), typeof(Thickness), typeof(RectangleBorder),
-                new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
+                new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender, OnBorderPenSubPropertyChanged));
 
         public Thickness BorderThickness
         {
             get => (Thickness)GetValue(BorderThicknessProperty);
             set => SetValue(BorderThicknessProperty, value);
+        }
+
+        static void OnBorderPenSubPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var border = (RectangleBorder)d;
+
+            border._leftPen = null;
+            border._topPen = null;
+            border._rightPen = null;
+            border._bottomPen = null;
         }
 
         public static readonly DependencyProperty IsLeftSideVisibleProperty =
