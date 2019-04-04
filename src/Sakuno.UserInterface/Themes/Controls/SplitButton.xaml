@@ -1,0 +1,91 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:uic="clr-namespace:Sakuno.UserInterface.Controls">
+
+    <Style TargetType="uic:SplitButton">
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrushKey}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushKey}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="Padding" Value="8, 4" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="uic:SplitButton">
+                    <uic:SizeSharingPanel Background="Transparent">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <DockPanel>
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1, 0, 0, 0" DockPanel.Dock="Right">
+                                    <ToggleButton Name="PART_ToggleButton" Style="{DynamicResource DropDownMakerToggleButtonStyle}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{DynamicResource ForegroundBrushKey}" IsChecked="{Binding IsPopupOpened, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
+                                </Border>
+
+                                <Button Name="Button" Content="{TemplateBinding Header}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Command="{TemplateBinding Command}" CommandParameter="{TemplateBinding CommandParameter}" CommandTarget="{TemplateBinding CommandTarget}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                            </DockPanel>
+                        </Border>
+
+                        <Popup Name="PART_Popup" IsOpen="{Binding IsChecked, ElementName=PART_ToggleButton}" AllowsTransparency="True" StaysOpen="False" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" VerticalOffset="{TemplateBinding PopupVerticalOffset}" HorizontalOffset="{TemplateBinding PopupHorizontalOffset}">
+                            <uic:SizeSharingPanel Margin="0, 0, 9, 9" TextElement.Foreground="Black">
+                                <Rectangle Fill="{DynamicResource ThemeBrushKey}">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Direction="315" Color="#71000000" BlurRadius="8" />
+                                    </Rectangle.Effect>
+                                </Rectangle>
+
+                                <Border Background="{DynamicResource ThemeBrushKey}" BorderBrush="{DynamicResource AccentBrushKey}" BorderThickness="1">
+                                    <ContentPresenter />
+                                </Border>
+                            </uic:SizeSharingPanel>
+                        </Popup>
+                    </uic:SizeSharingPanel>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsPopupOpened" Value="False" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="Button" Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsPopupOpened" Value="False" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter TargetName="Button" Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="PART_ToggleButton" Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsPopupOpened" Value="False" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}" />
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{DynamicResource InactiveBackgroundBrushKey}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource InactiveBorderBrushKey}" />
+                            <Setter Property="Foreground" Value="{DynamicResource InactiveForegroundBrushKey}" />
+                            <Setter TargetName="PART_ToggleButton" Property="Foreground" Value="{DynamicResource InactiveForegroundBrushKey}" />
+                        </Trigger>
+                        <Trigger SourceName="Button" Property="IsPressed" Value="True">
+                            <Setter TargetName="Button" Property="Background" Value="{DynamicResource AccentBrushKey}" />
+                            <Setter TargetName="Button" Property="BorderBrush" Value="{DynamicResource AccentBrushKey}" />
+                            <Setter TargetName="Button" Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
+                        </Trigger>
+                        <Trigger Property="IsPopupOpened" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource AccentBrushKey}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrushKey}" />
+                            <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
+                            <Setter TargetName="PART_ToggleButton" Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

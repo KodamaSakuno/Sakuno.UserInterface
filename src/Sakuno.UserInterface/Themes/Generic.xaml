@@ -3,6 +3,7 @@
 
         <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/DropDownButton.xaml" />
         <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/ModernWindow.xaml" />
+        <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/SplitButton.xaml" />
         <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Controls/WindowCaptionButtons.xaml" />
 
         <ResourceDictionary Source="/Sakuno.UserInterface;component/Themes/Shell/GlowEdge.xaml" />

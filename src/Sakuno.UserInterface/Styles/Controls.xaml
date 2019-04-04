@@ -10,6 +10,7 @@
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/DropDownButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/FocusVisualStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/SplitButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/TabControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Sakuno.UserInterface;component/Styles/Controls/ToggleButton.xaml" />

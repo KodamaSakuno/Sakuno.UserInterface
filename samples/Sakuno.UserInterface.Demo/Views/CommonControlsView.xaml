@@ -1,4 +1,4 @@
-<UserControl x:Class="Sakuno.UserInterface.Demo.Views.CommonControlsView"
+﻿<UserControl x:Class="Sakuno.UserInterface.Demo.Views.CommonControlsView"
              x:ClassModifier="internal"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -83,6 +83,26 @@
                             <TextBlock Text="This is a popup." Margin="12, 8" />
                         </Border>
                     </controls:DropDownButton>
+
+                    <controls:SplitButton>
+                        <controls:SplitButton.Header>
+                            <TextBlock Text="Split Button" />
+                        </controls:SplitButton.Header>
+
+                        <Border TextElement.Foreground="{DynamicResource ActiveForegroundBrushKey}">
+                            <TextBlock Text="This is a popup." Margin="12, 8" />
+                        </Border>
+                    </controls:SplitButton>
+
+                    <controls:SplitButton Style="{StaticResource ModernFlatSplitButtonStyle}">
+                        <controls:SplitButton.Header>
+                            <TextBlock Text="Flat Split Button" />
+                        </controls:SplitButton.Header>
+
+                        <Border TextElement.Foreground="{DynamicResource ActiveForegroundBrushKey}">
+                            <TextBlock Text="This is a popup." Margin="12, 8" />
+                        </Border>
+                    </controls:SplitButton>
                 </StackPanel>
             </ControlTemplate>
         </Grid.Resources>
