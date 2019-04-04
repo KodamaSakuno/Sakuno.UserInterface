@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:uic="clr-namespace:Sakuno.UserInterface.Controls">
 
     <Style x:Key="ModernComboBoxItemStyle" TargetType="ComboBoxItem">
         <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -37,19 +38,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
-                    <Grid SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                    <uic:SizeSharingPanel Background="Transparent">
                         <Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
-                                </Grid.ColumnDefinitions>
-
+                            <uic:SizeSharingPanel>
                                 <ContentPresenter Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" IsHitTestVisible="False"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
-                                <ToggleButton Name="ToggleButton" Style="{DynamicResource DropDownMakerToggleButtonStyle}" Foreground="{DynamicResource InactiveForegroundBrushKey}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press" Grid.ColumnSpan="2" />
-                            </Grid>
+                                <ToggleButton Name="ToggleButton" Style="{DynamicResource DropDownMakerToggleButtonStyle}" Foreground="{DynamicResource InactiveForegroundBrushKey}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press" />
+                            </uic:SizeSharingPanel>
                         </Border>
 
                         <Popup Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Placement="Bottom" Focusable="False" FocusVisualStyle="{x:Null}" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
@@ -59,7 +55,7 @@
                                 </ScrollViewer>
                             </Border>
                         </Popup>
-                    </Grid>
+                    </uic:SizeSharingPanel>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -76,7 +72,7 @@
 
                         <Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
                             <Setter TargetName="ToggleButton" Property="Background" Value="{DynamicResource AccentBrushKey}" />
-                            <Setter TargetName="ToggleButton" Property="Foreground" Value="{DynamicResource AccentBrushKey}" />
+                            <Setter TargetName="ToggleButton" Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

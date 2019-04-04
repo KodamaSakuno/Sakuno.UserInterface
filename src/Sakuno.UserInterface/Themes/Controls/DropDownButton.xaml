@@ -14,18 +14,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="uic:DropDownButton">
-                    <Grid Background="Transparent">
+                    <uic:SizeSharingPanel Background="Transparent">
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
-                                </Grid.ColumnDefinitions>
-
+                            <uic:SizeSharingPanel>
                                 <ContentPresenter Name="Header" ContentSource="Header" IsHitTestVisible="False" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
-                                <ToggleButton Name="PART_ToggleButton" Style="{DynamicResource DropDownMakerToggleButtonStyle}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsPopupOpened, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Grid.ColumnSpan="2" />
-                            </Grid>
+                                <ToggleButton Name="PART_ToggleButton" Style="{DynamicResource DropDownMakerToggleButtonStyle}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsPopupOpened, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </uic:SizeSharingPanel>
                         </Border>
 
                         <Popup Name="PART_Popup" IsOpen="{Binding IsChecked, ElementName=PART_ToggleButton}" AllowsTransparency="True" StaysOpen="False" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" VerticalOffset="{TemplateBinding PopupVerticalOffset}" HorizontalOffset="{TemplateBinding PopupHorizontalOffset}">
@@ -41,7 +36,7 @@
                                 </Border>
                             </uic:SizeSharingPanel>
                         </Popup>
-                    </Grid>
+                    </uic:SizeSharingPanel>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="ShowDropDownMarker" Value="False">
