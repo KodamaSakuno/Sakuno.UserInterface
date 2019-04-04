@@ -42,23 +42,13 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
-                                    <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0" />
+                                    <ColumnDefinition Width="Auto" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
                                 </Grid.ColumnDefinitions>
 
                                 <ContentPresenter Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" IsHitTestVisible="False"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
-                                <ToggleButton Name="ToggleButton" OverridesDefaultStyle="True" Foreground="{DynamicResource InactiveForegroundBrushKey}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press" Focusable="False" IsTabStop="False" Grid.ColumnSpan="2">
-                                    <ToggleButton.Template>
-                                        <ControlTemplate TargetType="ToggleButton">
-                                            <Border Background="Transparent">
-                                                <Border HorizontalAlignment="Right" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
-                                                    <Path Fill="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Data="M0,0 L3.5,4 7,0 z" />
-                                                </Border>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </ToggleButton.Template>
-                                </ToggleButton>
+                                <ToggleButton Name="ToggleButton" Style="{DynamicResource DropDownMakerToggleButtonStyle}" Foreground="{DynamicResource InactiveForegroundBrushKey}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press" Grid.ColumnSpan="2" />
                             </Grid>
                         </Border>
 

@@ -19,22 +19,12 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" MinWidth="10" />
+                                    <ColumnDefinition Width="Auto" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
                                 </Grid.ColumnDefinitions>
 
                                 <ContentPresenter Name="Header" ContentSource="Header" IsHitTestVisible="False" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
-                                <ToggleButton Name="PART_ToggleButton" OverridesDefaultStyle="True" BorderBrush="{TemplateBinding BorderBrush}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsPopupOpened, RelativeSource={RelativeSource TemplatedParent}}" Grid.ColumnSpan="2">
-                                    <ToggleButton.Template>
-                                        <ControlTemplate TargetType="ToggleButton">
-                                            <Border Background="Transparent">
-                                                <Border HorizontalAlignment="Right" Width="10" Margin="2, 0">
-                                                    <Path Fill="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Data="M0.5,0.5 L3.5,4.5 6.5,0.5 z" />
-                                                </Border>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </ToggleButton.Template>
-                                </ToggleButton>
+                                <ToggleButton Name="PART_ToggleButton" Style="{DynamicResource DropDownMakerToggleButtonStyle}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsPopupOpened, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Grid.ColumnSpan="2" />
                             </Grid>
                         </Border>
 
