@@ -26,8 +26,9 @@
 
   <ItemGroup>
     <CompilePixelShader Include="**\*.fx" />
+    <None Update="**\*.ps" Visible="False" />
   </ItemGroup>
-  
+
   <Import Project="CompilePixelShader.targets" />
 
 </Project>
