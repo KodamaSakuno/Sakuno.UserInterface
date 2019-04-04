@@ -17,7 +17,7 @@
     </Target>
 
     <Target Name="CompilePixelShaderFiles" Inputs="@(CompilePixelShader)" Outputs="@(CompilePixelShader -> '%(RelativeDir)%(Filename).ps')" BeforeTargets="AddPixelShaderFilesToResources">
-        <Exec Command="&quot;$(_FxcFilename)&quot; /T ps_3_0 /E main /Fo @(CompilePixelShader -> '%(RelativeDir)%(Filename).ps') @(CompilePixelShader)" />
+        <Exec Command="&quot;$(_FxcFilename)&quot; /T ps_3_0 /E main /Fo &quot;%(CompilePixelShader.RelativeDir)%(Filename).ps&quot; @(CompilePixelShader)" />
     </Target>
 
     <Target Name="AddPixelShaderFilesToResources" BeforeTargets="FileClassification">
