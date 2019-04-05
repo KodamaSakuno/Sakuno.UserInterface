@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:uic="clr-namespace:Sakuno.UserInterface.Controls">
 
@@ -30,7 +30,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
-        <Setter Property="Padding" Value="1" />
+        <Setter Property="Padding" Value="4" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
 
         <Setter Property="ItemContainerStyle" Value="{DynamicResource ModernComboBoxItemStyle}" />
@@ -42,7 +42,7 @@
                         <Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <uic:SizeSharingPanel>
                                 <ContentPresenter Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" IsHitTestVisible="False"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
                                 <ToggleButton Name="ToggleButton" Style="{DynamicResource DropDownMakerToggleButtonStyle}" Foreground="{DynamicResource InactiveForegroundBrushKey}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press" />
                             </uic:SizeSharingPanel>

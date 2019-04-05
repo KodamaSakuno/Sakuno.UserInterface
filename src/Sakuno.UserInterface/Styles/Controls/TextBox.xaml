@@ -7,7 +7,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
         <Setter Property="CaretBrush" Value="{DynamicResource ActiveForegroundBrushKey}"/>
-        <Setter Property="Padding" Value="1" />
+        <Setter Property="Padding" Value="4" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
 
@@ -15,7 +15,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <ScrollViewer Name="PART_ContentHost" Margin="{TemplateBinding Padding}"/>
+                        <ScrollViewer Name="PART_ContentHost" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
