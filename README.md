@@ -7,13 +7,21 @@
 
 My framework for WPF apps.
 
-## Installation
+## Quick Start
 
-You can install via NuGet Package Manager.
+1. Install package via NuGet Package Manager.
 
 ```powershell
 PM> Install-Package Sakuno.UserInterface
 ```
+
+2. Change your App class from Application to [Themed App](./src/Sakuno.UserInterface/ThemedApp.cs).
+
+  * You can change theme and accent in constructor.
+
+3. Change your window class(es) from Window to [ModernWindow](./src/Sakuno.UserInterface/Controls/ModernWindow.cs).
+
+4. Compile and run your program.
 
 ## Screenshots
 
