@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:uim="clr-namespace:Sakuno.UserInterface.Markup;assembly=Sakuno.UserInterface"
              xmlns:models="clr-namespace:Sakuno.UserInterface.Demo.Models"
              mc:Ignorable="d">
     <UserControl.Resources>
@@ -27,7 +28,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.Resources>
-            <Style TargetType="TabControl" BasedOn="{StaticResource {x:Type TabControl}}">
+            <Style TargetType="TabControl" BasedOn="{uim:StaticResourceKeyOfType TabControl}">
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="Margin" Value="8" />
 

@@ -5,6 +5,7 @@
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:uic="clr-namespace:Sakuno.UserInterface.Controls;assembly=Sakuno.UserInterface"
+                  xmlns:uim="clr-namespace:Sakuno.UserInterface.Markup;assembly=Sakuno.UserInterface"
                   xmlns:viewmodels="clr-namespace:Sakuno.UserInterface.Demo.ViewModels"
                   xmlns:views="clr-namespace:Sakuno.UserInterface.Demo.Views"
                   mc:Ignorable="d"
@@ -23,7 +24,7 @@
 
         <TabControl TabStripPlacement="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
             <TabControl.ItemContainerStyle>
-                <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+                <Style TargetType="TabItem" BasedOn="{uim:StaticResourceKeyOfType TabItem}">
                     <Setter Property="Height" Value="40" />
                 </Style>
             </TabControl.ItemContainerStyle>
