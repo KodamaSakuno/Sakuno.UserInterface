@@ -39,6 +39,9 @@
                     <ToggleButton Margin="4">
                         <TextBlock Text="Toggle Button" />
                     </ToggleButton>
+                    <ToggleButton Style="{StaticResource ModernFlatToggleButtonStyle}" Margin="4">
+                        <TextBlock Text="Flat Toggle Button" />
+                    </ToggleButton>
 
                     <TextBox Margin="4" />
 
