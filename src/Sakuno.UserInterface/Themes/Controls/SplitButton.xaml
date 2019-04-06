@@ -7,7 +7,6 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushKey}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
-        <Setter Property="Margin" Value="4" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
 
