@@ -96,5 +96,25 @@ namespace Sakuno.UserInterface.BBCode.Tests
             Assert.NotNull(italicTag);
             Assert.Equal("i", italicTag.Name);
         }
+
+        [Fact]
+        public static void SimpleParameterizedTag()
+        {
+            var code = "[color=red]RED[/color]";
+            var document = new Parser(code).Parse();
+            Assert.Equal(1, document.Elements.Count);
+
+            var colorTag = document.Elements[0] as Tag;
+            Assert.NotNull(colorTag);
+            Assert.Equal("color", colorTag.Name);
+
+            var childText = colorTag.Child as TextElement;
+            Assert.NotNull(childText);
+            Assert.Equal("RED", childText.Text);
+
+            var parameter = colorTag.Parameter as SimpleParameter;
+            Assert.NotNull(parameter);
+            Assert.Equal("red", parameter.Value);
+        }
     }
 }

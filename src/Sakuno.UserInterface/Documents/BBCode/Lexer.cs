@@ -1,11 +1,11 @@
-namespace Sakuno.UserInterface.Documents.BBCode
+﻿namespace Sakuno.UserInterface.Documents.BBCode
 {
     struct Lexer
     {
         string _code;
         int _position;
 
-        bool _inTag;
+        bool _inTag, _inTagParameterValue;
 
         public Lexer(string code)
         {
@@ -13,6 +13,7 @@ namespace Sakuno.UserInterface.Documents.BBCode
             _position = -1;
 
             _inTag = false;
+            _inTagParameterValue = false;
         }
 
         void Advance() => _position++;
@@ -46,7 +47,12 @@ namespace Sakuno.UserInterface.Documents.BBCode
 
                     case ']':
                         _inTag = false;
+                        _inTagParameterValue = false;
                         return Return(TokenType.RightBracket, _position);
+
+                    case '=' when _inTag:
+                        _inTagParameterValue = true;
+                        return Return(TokenType.Assign, _position);
 
                     default:
                         var startPosition = _position;
@@ -64,7 +70,7 @@ namespace Sakuno.UserInterface.Documents.BBCode
 
                             return Return(TokenType.Text, startPosition, _position - startPosition + 1);
                         }
-                        else
+                        else if (!_inTagParameterValue)
                         {
                             while (true)
                             {
@@ -76,6 +82,19 @@ namespace Sakuno.UserInterface.Documents.BBCode
                             }
 
                             return Return(TokenType.Identifier, startPosition, _position - startPosition + 1);
+                        }
+                        else
+                        {
+                            while (true)
+                            {
+                                var c = Peek();
+                                if (c == ']')
+                                    break;
+
+                                Advance();
+                            }
+
+                            return Return(TokenType.Text, startPosition, _position - startPosition + 1);
                         }
                 }
             }

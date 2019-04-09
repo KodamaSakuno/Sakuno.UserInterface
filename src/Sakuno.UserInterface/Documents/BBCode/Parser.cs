@@ -78,6 +78,16 @@ namespace Sakuno.UserInterface.Documents.BBCode
             var token = Lex();
             var tagName = _code.Substring(token.Position, token.Length);
 
+            Parameter parameter = null;
+
+            if (_lookahead.Type == TokenType.Assign)
+            {
+                Expect(TokenType.Assign);
+
+                token = Lex();
+                parameter = new SimpleParameter(_code.Substring(token.Position, token.Length));
+            }
+
             Expect(TokenType.RightBracket);
 
             var child = ParseChild();
@@ -91,7 +101,7 @@ namespace Sakuno.UserInterface.Documents.BBCode
 
             Expect(TokenType.RightBracket);
 
-            return new Tag(tagName, child);
+            return new Tag(tagName, parameter, child);
         }
         DocumentElement ParseChild()
         {

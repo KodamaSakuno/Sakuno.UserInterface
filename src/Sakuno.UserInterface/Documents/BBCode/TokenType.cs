@@ -10,5 +10,7 @@
         LeftBracket,
         LeftBracketWithSlash,
         RightBracket,
+
+        Assign,
     }
 }

@@ -6,11 +6,14 @@ namespace Sakuno.UserInterface.Documents.BBCode
     {
         public string Name { get; }
 
+        public Parameter Parameter { get; }
+
         public DocumentElement Child { get; }
 
-        internal Tag(string name, DocumentElement child)
+        internal Tag(string name, Parameter parameter, DocumentElement child)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
+            Parameter = parameter;
             Child = child;
         }
     }
