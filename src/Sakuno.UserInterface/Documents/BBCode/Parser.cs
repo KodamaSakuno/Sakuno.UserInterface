@@ -36,6 +36,9 @@ namespace Sakuno.UserInterface.Documents.BBCode
 
         public Document Parse()
         {
+            if (_code.IsNullOrEmpty())
+                return Document.Empty;
+
             _lookahead = _lexer.Scan();
 
             var elements = ParseElements();
