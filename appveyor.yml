@@ -2,20 +2,26 @@ version: 0.3.0-pre7-{build}
 branches:
   only:
   - master
-image: Visual Studio 2017
+image: Visual Studio 2019 Preview
 configuration: Release
 platform: Any CPU
 init:
 - cmd: git config --global core.autocrlf true
 nuget:
   disable_publish_on_pr: true
+install:
+- ps: |
+    Start-FileDownload 'https://download.visualstudio.microsoft.com/download/pr/31b5b67f-b787-4f73-a728-5ec61f10a4de/be6430bcd9a62f610cd9f12f8cc2c736/dotnet-sdk-3.0.100-preview3-010431-win-x64.exe'
+    Start-Process .\dotnet-sdk-3.0.100-preview3-010431-win-x64.exe "/install /norestart /quiet /log sdkinstall.log" -NoNewWindow -Wait
 before_build:
 - cmd: nuget restore
 build:
   project: Sakuno.UserInterface.sln
   verbosity: minimal
+test_script:
+- ps: dotnet test tests\Sakuno.UserInterface.Tests\Sakuno.UserInterface.Tests.csproj --configuration Release --no-build /property:Platform=AnyCPU
 after_test:
-- ps: Move-Item artifacts\$($env:configuration)\*.nupkg $env:APPVEYOR_BUILD_FOLDER
+- ps: Move-Item artifacts\$env:configuration\*.nupkg $env:APPVEYOR_BUILD_FOLDER
 artifacts:
 - path: '*.nupkg'
   name: NuGet
