@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Buffers;
 using System.Collections.Generic;
 
 namespace Sakuno.UserInterface.Documents.BBCode
@@ -69,14 +70,14 @@ namespace Sakuno.UserInterface.Documents.BBCode
         {
             var token = Lex();
 
-            return new TextElement(token.Length > 0 ? _code.Substring(token.Position, token.Length) : string.Empty);
+            return new TextElement(token.Segment);
         }
         Tag ParseTag()
         {
             Expect(TokenType.LeftBracket);
 
             var token = Lex();
-            var tagName = _code.Substring(token.Position, token.Length);
+            var tagName = token.Segment;
 
             Parameter parameter = null;
 
@@ -85,7 +86,7 @@ namespace Sakuno.UserInterface.Documents.BBCode
                 Expect(TokenType.Assign);
 
                 token = Lex();
-                parameter = new SimpleParameter(_code.Substring(token.Position, token.Length));
+                parameter = new SimpleParameter(token.Segment);
             }
 
             Expect(TokenType.RightBracket);
@@ -95,13 +96,17 @@ namespace Sakuno.UserInterface.Documents.BBCode
             Expect(TokenType.LeftBracketWithSlash);
 
             token = Lex();
-            var closingTagName = _code.Substring(token.Position, token.Length);
-            if (!tagName.OICEquals(closingTagName))
+            var closingTagName = token.Segment;
+            if (!MemoryExtensions.Equals(tagName.Span, closingTagName.Span, StringComparison.OrdinalIgnoreCase))
                 throw new BBCodeParseException();
 
             Expect(TokenType.RightBracket);
 
-            return new Tag(tagName, parameter, child);
+#if !NET462
+            return new Tag(new string(tagName.Span), parameter, child);
+#else
+            return new Tag(tagName.ToString(), parameter, child);
+#endif
         }
         DocumentElement ParseChild()
         {

@@ -1,10 +1,12 @@
-﻿namespace Sakuno.UserInterface.Documents.BBCode
+﻿using System;
+
+namespace Sakuno.UserInterface.Documents.BBCode
 {
     public sealed class TextElement : DocumentElement
     {
-        public string Text { get; }
+        public ReadOnlyMemory<char> Text { get; }
 
-        internal TextElement(string text)
+        internal TextElement(ReadOnlyMemory<char> text)
         {
             Text = text;
         }

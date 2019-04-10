@@ -4,11 +4,11 @@ namespace Sakuno.UserInterface.Documents.BBCode
 {
     public sealed class SimpleParameter : Parameter
     {
-        public string Value { get; }
+        public ReadOnlyMemory<char> Value { get; }
 
-        public SimpleParameter(string value)
+        public SimpleParameter(ReadOnlyMemory<char> value)
         {
-            if (value.IsNullOrWhiteSpace())
+            if (value.IsEmpty)
                 throw new ArgumentException(nameof(value));
 
             Value = value;

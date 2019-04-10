@@ -1,4 +1,6 @@
-﻿namespace Sakuno.UserInterface.Documents.BBCode
+﻿using System;
+
+namespace Sakuno.UserInterface.Documents.BBCode
 {
     struct Lexer
     {
@@ -102,6 +104,6 @@
             return Return(TokenType.EOS, _position);
         }
 
-        Token Return(TokenType type, int startPosition, int length = 1) => new Token(type, startPosition, length);
+        Token Return(TokenType type, int startPosition, int length = 1) => new Token(type, _code.AsMemory(startPosition, length));
     }
 }

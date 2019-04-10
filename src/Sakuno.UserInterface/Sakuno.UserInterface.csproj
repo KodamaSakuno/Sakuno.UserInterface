@@ -24,6 +24,10 @@
     <PackageReference Include="Sakuno.SystemLayer" Version="0.4.1" />
   </ItemGroup>
 
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+    <PackageReference Include="System.Memory" Version="4.5.2" />
+  </ItemGroup>
+
   <ItemGroup>
     <CompilePixelShader Include="**\*.fx" />
     <None Update="**\*.ps" Visible="False" />

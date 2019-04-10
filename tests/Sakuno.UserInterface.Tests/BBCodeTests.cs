@@ -21,7 +21,7 @@ namespace Sakuno.UserInterface.BBCode.Tests
 
             var textElement = document.Elements[0] as TextElement;
             Assert.NotNull(textElement);
-            Assert.Equal("A simple text.", textElement.Text);
+            Assert.Equal("A simple text.", textElement.Text.ToString());
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Sakuno.UserInterface.BBCode.Tests
 
             var textElement = tagElement.Child as TextElement;
             Assert.NotNull(textElement);
-            Assert.Equal("A simple text.", textElement.Text);
+            Assert.Equal("A simple text.", textElement.Text.ToString());
         }
 
         [Fact]
@@ -70,7 +70,7 @@ namespace Sakuno.UserInterface.BBCode.Tests
 
             var textElement = elementGroup.Elements[0] as TextElement;
             Assert.NotNull(textElement);
-            Assert.Equal("Text A", textElement.Text);
+            Assert.Equal("Text A", textElement.Text.ToString());
 
             var italicTag = elementGroup.Elements[1] as Tag;
             Assert.NotNull(italicTag);
@@ -78,7 +78,7 @@ namespace Sakuno.UserInterface.BBCode.Tests
 
             var childOfItalicTag = italicTag.Child as TextElement;
             Assert.NotNull(childOfItalicTag);
-            Assert.Equal("Text B", childOfItalicTag.Text);
+            Assert.Equal("Text B", childOfItalicTag.Text.ToString());
         }
 
         [Fact]
@@ -110,11 +110,11 @@ namespace Sakuno.UserInterface.BBCode.Tests
 
             var childText = colorTag.Child as TextElement;
             Assert.NotNull(childText);
-            Assert.Equal("RED", childText.Text);
+            Assert.Equal("RED", childText.Text.ToString());
 
             var parameter = colorTag.Parameter as SimpleParameter;
             Assert.NotNull(parameter);
-            Assert.Equal("red", parameter.Value);
+            Assert.Equal("red", parameter.Value.ToString());
         }
     }
 }

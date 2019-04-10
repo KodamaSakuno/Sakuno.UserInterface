@@ -1,16 +1,16 @@
-﻿namespace Sakuno.UserInterface.Documents.BBCode
+﻿using System;
+
+namespace Sakuno.UserInterface.Documents.BBCode
 {
     readonly struct Token
     {
         public TokenType Type { get; }
-        public int Position { get; }
-        public int Length { get; }
+        public ReadOnlyMemory<char> Segment { get; }
 
-        public Token(TokenType type, int position, int length)
+        public Token(TokenType type, ReadOnlyMemory<char> segment)
         {
             Type = type;
-            Position = position;
-            Length = length;
+            Segment = segment;
         }
     }
 }
