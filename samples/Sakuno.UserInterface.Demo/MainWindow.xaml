@@ -60,6 +60,14 @@
 
                 <views:RelativePanelView />
             </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="BB Code" />
+                </TabItem.Header>
+
+                <views:BBCodeView />
+            </TabItem>
         </TabControl>
 
         <Rectangle Fill="{DynamicResource AccentBrushKey}" Grid.Row="1" />
