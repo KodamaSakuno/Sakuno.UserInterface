@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Buffers;
 using System.Collections.Generic;
 
@@ -6,6 +6,8 @@ namespace Sakuno.UserInterface.Documents.BBCode
 {
     struct Parser
     {
+        static ReadOnlyMemory<char> _breakline = "br".AsMemory();
+
         string _code;
         Lexer _lexer;
 
@@ -81,6 +83,13 @@ namespace Sakuno.UserInterface.Documents.BBCode
 
             var token = Lex();
             var tagName = token.Segment;
+
+            if (MemoryExtensions.Equals(tagName.Span, _breakline.Span, StringComparison.OrdinalIgnoreCase))
+            {
+                Expect(TokenType.RightBracket);
+
+                return KnownTags.Breakline;
+            }
 
             Parameter parameter = null;
 

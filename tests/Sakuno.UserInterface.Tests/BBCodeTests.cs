@@ -1,4 +1,4 @@
-﻿using Sakuno.UserInterface.Documents.BBCode;
+using Sakuno.UserInterface.Documents.BBCode;
 using Xunit;
 
 namespace Sakuno.UserInterface.BBCode.Tests
@@ -115,6 +115,25 @@ namespace Sakuno.UserInterface.BBCode.Tests
             var parameter = colorTag.Parameter as SimpleParameter;
             Assert.NotNull(parameter);
             Assert.Equal("red", parameter.Value.ToString());
+        }
+
+        [Fact]
+        public static void SimpleLinebreak()
+        {
+            var code = "Line 1[br]Line 2";
+            var document = new Parser(code).Parse();
+            Assert.Equal(3, document.Elements.Count);
+
+            var line1 = document.Elements[0] as TextElement;
+            Assert.NotNull(line1);
+            Assert.Equal("Line 1", line1.Text.ToString());
+
+            var breaklineTag = document.Elements[1];
+            Assert.StrictEqual(KnownTags.Breakline, breaklineTag);
+
+            var line2 = document.Elements[2] as TextElement;
+            Assert.NotNull(line2);
+            Assert.Equal("Line 2", line2.Text.ToString());
         }
     }
 }
