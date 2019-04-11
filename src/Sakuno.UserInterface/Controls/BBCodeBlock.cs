@@ -1,4 +1,4 @@
-﻿using Sakuno.UserInterface.Documents.BBCode;
+using Sakuno.UserInterface.Documents.BBCode;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,7 +7,7 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using TextElement = Sakuno.UserInterface.Documents.BBCode.TextElement;
 
-namespace Sakuno.UserInterface.BBCode
+namespace Sakuno.UserInterface.Controls
 {
     [ContentProperty(nameof(Code))]
     public class BBCodeBlock : FrameworkElement
