@@ -93,10 +93,8 @@ namespace Sakuno.UserInterface.Documents.BBCode
 
             Parameter parameter = null;
 
-            if (_lookahead.Type == TokenType.Assign)
+            if (_lookahead.Type == TokenType.ParameterValue)
             {
-                Expect(TokenType.Assign);
-
                 token = Lex();
                 parameter = new SimpleParameter(token.Segment);
             }

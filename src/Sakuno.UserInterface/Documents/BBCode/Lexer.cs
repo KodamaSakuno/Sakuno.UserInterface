@@ -7,7 +7,7 @@ namespace Sakuno.UserInterface.Documents.BBCode
         string _code;
         int _position;
 
-        bool _inTag, _inTagParameterValue;
+        bool _inTag;
 
         public Lexer(string code)
         {
@@ -15,7 +15,6 @@ namespace Sakuno.UserInterface.Documents.BBCode
             _position = -1;
 
             _inTag = false;
-            _inTagParameterValue = false;
         }
 
         void Advance() => _position++;
@@ -49,59 +48,69 @@ namespace Sakuno.UserInterface.Documents.BBCode
 
                     case ']':
                         _inTag = false;
-                        _inTagParameterValue = false;
                         return Return(TokenType.RightBracket, _position);
 
                     case '=' when _inTag:
-                        _inTagParameterValue = true;
-                        return Return(TokenType.Assign, _position);
+                        return ParameterValue();
+
+                    case ' ' when _inTag:
+                        continue;
 
                     default:
-                        var startPosition = _position;
-
-                        if (!_inTag)
-                        {
-                            while (true)
-                            {
-                                var c = Peek();
-                                if (c == '[' || c == '\0')
-                                    break;
-
-                                Advance();
-                            }
-
-                            return Return(TokenType.Text, startPosition, _position - startPosition + 1);
-                        }
-                        else if (!_inTagParameterValue)
-                        {
-                            while (true)
-                            {
-                                var c = Peek();
-                                if (!char.IsLetterOrDigit(c))
-                                    break;
-
-                                Advance();
-                            }
-
-                            return Return(TokenType.Identifier, startPosition, _position - startPosition + 1);
-                        }
-                        else
-                        {
-                            while (true)
-                            {
-                                var c = Peek();
-                                if (c == ']')
-                                    break;
-
-                                Advance();
-                            }
-
-                            return Return(TokenType.Text, startPosition, _position - startPosition + 1);
-                        }
+                        return TextOrIdentifier();
                 }
             }
 
             return Return(TokenType.EOS, _position);
+        }
+
+        Token ParameterValue()
+        {
+            Advance();
+
+            var startPosition = _position;
+            while (true)
+            {
+                var c = Peek();
+                if (c == ']' || c == ' ')
+                    break;
+
+                Advance();
+            }
+
+            return Return(TokenType.ParameterValue, startPosition, _position - startPosition + 1);
+        }
+
+        Token TextOrIdentifier()
+        {
+            var startPosition = _position;
+
+            if (!_inTag)
+            {
+                while (true)
+                {
+                    var c = Peek();
+                    if (c == '[' || c == '\0')
+                        break;
+
+                    Advance();
+                }
+
+                return Return(TokenType.Text, startPosition, _position - startPosition + 1);
+            }
+            else
+            {
+                while (true)
+                {
+                    var c = Peek();
+                    if (!char.IsLetterOrDigit(c))
+                        break;
+
+                    Advance();
+                }
+
+                return Return(TokenType.Identifier, startPosition, _position - startPosition + 1);
+            }
         }
 
         Token Return(TokenType type, int startPosition, int length = 1) => new Token(type, _code.AsMemory(startPosition, length));

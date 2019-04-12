@@ -6,11 +6,10 @@
 
         Text,
         Identifier,
+        ParameterValue,
 
         LeftBracket,
         LeftBracketWithSlash,
         RightBracket,
-
-        Assign,
     }
 }
