@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Buffers;
 using System.Collections.Generic;
 
@@ -71,18 +71,12 @@ namespace Sakuno.UserInterface.Documents.BBCode
             }
         }
 
-        TextElement ParseText()
-        {
-            var token = Lex();
-
-            return new TextElement(token.Segment);
-        }
+        TextElement ParseText() => new TextElement(Lex().Segment);
         Tag ParseTag()
         {
             Expect(TokenType.LeftBracket);
 
-            var token = Lex();
-            var tagName = token.Segment;
+            var tagName = Lex().Segment;
 
             if (MemoryExtensions.Equals(tagName.Span, _breakline.Span, StringComparison.OrdinalIgnoreCase))
             {
@@ -94,10 +88,7 @@ namespace Sakuno.UserInterface.Documents.BBCode
             Parameter parameter = null;
 
             if (_lookahead.Type == TokenType.ParameterValue)
-            {
-                token = Lex();
-                parameter = new SimpleParameter(token.Segment);
-            }
+                parameter = new SimpleParameter(Lex().Segment);
 
             Expect(TokenType.RightBracket);
 
@@ -105,8 +96,7 @@ namespace Sakuno.UserInterface.Documents.BBCode
 
             Expect(TokenType.LeftBracketWithSlash);
 
-            token = Lex();
-            var closingTagName = token.Segment;
+            var closingTagName = Lex().Segment;
             if (!MemoryExtensions.Equals(tagName.Span, closingTagName.Span, StringComparison.OrdinalIgnoreCase))
                 throw new BBCodeParseException();
 
