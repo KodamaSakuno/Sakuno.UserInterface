@@ -4,48 +4,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:controls="clr-namespace:Sakuno.UserInterface.Controls;assembly=Sakuno.UserInterface"
+             xmlns:uic="clr-namespace:Sakuno.UserInterface.Controls;assembly=Sakuno.UserInterface"
              mc:Ignorable="d">
     <Grid HorizontalAlignment="Left" Margin="4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="4" />
             <ColumnDefinition Width="250" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid.Resources>
             <ControlTemplate x:Key="ControlsSample">
-                <StackPanel>
-                    <CheckBox Margin="4">
+                <uic:ExtendedStackPanel Spacing="4">
+                    <CheckBox>
                         <TextBlock Text="CheckBox" />
                     </CheckBox>
 
-                    <RadioButton IsChecked="True" Margin="4">
+                    <RadioButton IsChecked="True">
                         <TextBlock Text="RadioButton" />
                     </RadioButton>
-                    <RadioButton Margin="4">
+                    <RadioButton>
                         <TextBlock Text="RadioButton" />
                     </RadioButton>
-                    <RadioButton Margin="4">
+                    <RadioButton>
                         <TextBlock Text="RadioButton" />
                     </RadioButton>
 
-                    <Button Margin="4">
+                    <Button>
                         <TextBlock Text="Button" />
                     </Button>
-                    <Button Style="{StaticResource ModernFlatButtonStyle}" Margin="4">
+                    <Button Style="{StaticResource ModernFlatButtonStyle}">
                         <TextBlock Text="Flat Button" />
                     </Button>
-                    <ToggleButton Margin="4">
+                    <ToggleButton>
                         <TextBlock Text="Toggle Button" />
                     </ToggleButton>
-                    <ToggleButton Style="{StaticResource ModernFlatToggleButtonStyle}" Margin="4">
+                    <ToggleButton Style="{StaticResource ModernFlatToggleButtonStyle}">
                         <TextBlock Text="Flat Toggle Button" />
                     </ToggleButton>
 
-                    <TextBox Margin="4" />
+                    <TextBox />
 
-                    <ComboBox Margin="4">
+                    <ComboBox>
                         <ComboBoxItem>
                             <TextBlock Text="1" />
                         </ComboBoxItem>
@@ -57,63 +58,63 @@
                         </ComboBoxItem>
                     </ComboBox>
 
-                    <controls:DropDownButton Margin="4">
-                        <controls:DropDownButton.Header>
+                    <uic:DropDownButton>
+                        <uic:DropDownButton.Header>
                             <TextBlock Text="Drop Down Button" />
-                        </controls:DropDownButton.Header>
+                        </uic:DropDownButton.Header>
 
                         <Border TextElement.Foreground="{DynamicResource ActiveForegroundBrushKey}">
                             <TextBlock Text="This is a popup." Margin="12, 8" />
                         </Border>
-                    </controls:DropDownButton>
+                    </uic:DropDownButton>
 
-                    <controls:DropDownButton Style="{StaticResource ModernFlatDropDownButtonStyle}" Margin="4">
-                        <controls:DropDownButton.Header>
+                    <uic:DropDownButton Style="{StaticResource ModernFlatDropDownButtonStyle}">
+                        <uic:DropDownButton.Header>
                             <TextBlock Text="Flat Drop Down Button" />
-                        </controls:DropDownButton.Header>
+                        </uic:DropDownButton.Header>
 
                         <Border TextElement.Foreground="{DynamicResource ActiveForegroundBrushKey}">
                             <TextBlock Text="This is a popup." Margin="12, 8" />
                         </Border>
-                    </controls:DropDownButton>
+                    </uic:DropDownButton>
 
-                    <controls:DropDownButton Style="{StaticResource ModernFlatDropDownButtonStyle}" ShowDropDownMarker="False" Margin="4">
-                        <controls:DropDownButton.Header>
+                    <uic:DropDownButton Style="{StaticResource ModernFlatDropDownButtonStyle}" ShowDropDownMarker="False">
+                        <uic:DropDownButton.Header>
                             <TextBlock Text="Flat Drop Down Button" />
-                        </controls:DropDownButton.Header>
+                        </uic:DropDownButton.Header>
 
                         <Border TextElement.Foreground="{DynamicResource ActiveForegroundBrushKey}">
                             <TextBlock Text="This is a popup." Margin="12, 8" />
                         </Border>
-                    </controls:DropDownButton>
+                    </uic:DropDownButton>
 
-                    <controls:SplitButton Margin="4">
-                        <controls:SplitButton.Header>
+                    <uic:SplitButton>
+                        <uic:SplitButton.Header>
                             <TextBlock Text="Split Button" />
-                        </controls:SplitButton.Header>
+                        </uic:SplitButton.Header>
 
                         <Border TextElement.Foreground="{DynamicResource ActiveForegroundBrushKey}">
                             <TextBlock Text="This is a popup." Margin="12, 8" />
                         </Border>
-                    </controls:SplitButton>
+                    </uic:SplitButton>
 
-                    <controls:SplitButton Style="{StaticResource ModernFlatSplitButtonStyle}" Margin="4">
-                        <controls:SplitButton.Header>
+                    <uic:SplitButton Style="{StaticResource ModernFlatSplitButtonStyle}">
+                        <uic:SplitButton.Header>
                             <TextBlock Text="Flat Split Button" />
-                        </controls:SplitButton.Header>
+                        </uic:SplitButton.Header>
 
                         <Border TextElement.Foreground="{DynamicResource ActiveForegroundBrushKey}">
                             <TextBlock Text="This is a popup." Margin="12, 8" />
                         </Border>
-                    </controls:SplitButton>
-                </StackPanel>
+                    </uic:SplitButton>
+                </uic:ExtendedStackPanel>
             </ControlTemplate>
         </Grid.Resources>
 
         <StackPanel>
             <Control Template="{StaticResource ControlsSample}" />
         </StackPanel>
-        <StackPanel Margin="4, 0" Grid.Column="1">
+        <StackPanel Margin="4, 0" Grid.Column="2">
             <Control Template="{StaticResource ControlsSample}" IsEnabled="False" />
         </StackPanel>
     </Grid>

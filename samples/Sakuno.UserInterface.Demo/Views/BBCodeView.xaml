@@ -9,23 +9,19 @@
         <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Margin" Value="0, 12, 0, 0" />
-        </Style>
-        <Style x:Key="PlainBBCodeTextStyle" TargetType="TextBlock">
-            <Setter Property="Margin" Value="0, 4, 0, 0" />
+            <Setter Property="Margin" Value="0, 8, 0, 0" />
         </Style>
         <Style x:Key="BBCodeBlockBorderStyle" TargetType="Border">
             <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="Padding" Value="4" />
-            <Setter Property="Margin" Value="0, 4, 0, 0" />
         </Style>
     </UserControl.Resources>
 
-    <StackPanel Margin="4">
+    <uic:ExtendedStackPanel Spacing="4" Margin="4">
         <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Sample 1" Margin="0" />
 
-        <TextBlock Name="Sample1" Style="{StaticResource PlainBBCodeTextStyle}" Text="[b]Bold[/b] [i]Italic[/i] [u]Underline[/u]" />
+        <TextBlock Name="Sample1" Text="[b]Bold[/b] [i]Italic[/i] [u]Underline[/u]" />
 
         <Border Style="{StaticResource BBCodeBlockBorderStyle}">
             <uic:BBCodeBlock Code="{Binding Text, Source={x:Reference Sample1}}" />
@@ -33,7 +29,7 @@
 
         <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Sample 2" />
 
-        <TextBlock Name="Sample2" Style="{StaticResource PlainBBCodeTextStyle}" Text="Support [b]text with [i][color=red]Complex[/color] Formatting[/i][/b]." />
+        <TextBlock Name="Sample2" Text="Support [b]text with [i][color=red]Complex[/color] Formatting[/i][/b]." />
 
         <Border Style="{StaticResource BBCodeBlockBorderStyle}">
             <uic:BBCodeBlock Code="{Binding Text, Source={x:Reference Sample2}}" />
@@ -41,10 +37,10 @@
 
         <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Sample 3" />
 
-        <TextBlock Name="Sample3" Style="{StaticResource PlainBBCodeTextStyle}" Text="This is 1st line.[br]This is 2nd line.[br]This is 3rd line." />
+        <TextBlock Name="Sample3" Text="This is 1st line.[br]This is 2nd line.[br]This is 3rd line." />
 
         <Border Style="{StaticResource BBCodeBlockBorderStyle}">
             <uic:BBCodeBlock Code="{Binding Text, Source={x:Reference Sample3}}" />
         </Border>
-    </StackPanel>
+    </uic:ExtendedStackPanel>
 </UserControl>
