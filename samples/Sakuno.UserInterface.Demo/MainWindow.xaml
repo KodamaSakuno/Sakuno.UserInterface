@@ -68,6 +68,14 @@
 
                 <views:BBCodeView />
             </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="ExStackPanel" />
+                </TabItem.Header>
+
+                <views:ExtendedStackPanelView />
+            </TabItem>
         </TabControl>
 
         <Rectangle Fill="{DynamicResource AccentBrushKey}" Grid.Row="1" />
