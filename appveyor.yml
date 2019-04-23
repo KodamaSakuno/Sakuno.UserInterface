@@ -1,4 +1,4 @@
-version: 0.3.0-pre7-{build}
+version: 0.3.0-pre8-{build}
 branches:
   only:
   - master

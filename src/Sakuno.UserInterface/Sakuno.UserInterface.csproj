@@ -6,7 +6,7 @@
     <AssemblyName>Sakuno.UserInterface</AssemblyName>
     <OutputPath>$(SolutionDir)artifacts\$(Configuration)\</OutputPath>
     <PackageId>Sakuno.UserInterface</PackageId>
-    <Version>0.3.0-pre7</Version>
+    <Version>0.3.0-pre8</Version>
     <Authors>Kodama Sakuno</Authors>
     <Description>Sakuno's framework for WPF apps</Description>
     <Product>Sakuno.UserInterface</Product>
